@@ -403,14 +403,6 @@ body {
     color: #818181;
 }
 
-
-
-
-
-
-
-
-
 /* FIM QUIZZ EM ANDAMENTO */
 
 
@@ -433,13 +425,9 @@ body {
     .titulo {
         margin-left: 15px;
     }
-<<<<<<< HEAD
 
     .quizz,
     .caixa-sem-quiz {
-=======
-    .quizz, .caixa-sem-quizz{
->>>>>>> 4a5a1854ef9b982f216c13de5effec68d6048ced
         width: 90%;
     }
 
