@@ -2,12 +2,209 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: white;
+    font-family: roboto;
+    width: 100%;
+}
+header{
+    background: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 69px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    top:0;
+}
+
+/*TELA INICIAL*/
+.tela-inicial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 146px;
+    margin-bottom: 140px;
+}
+.caixa-sem-quizz{
+    background: #FAFAFA;
+    border: 1px dashed #D4D4D4;
+    border-radius: 5px;
+    width: 1051px;
+    height: 181px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.caixa-sem-quizz p{
+    font-weight: 400;
+    font-size: 20px;
+    color: #B9B9B9; 
+    margin-bottom: 34px;   
+    text-align: center;
+}
+.caixa-sem-quizz button{
+    text-align: center;
+    color: #EC362D;
+    width: 151px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 21px;
+    background: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+.caixa-sem-quizz button:hover{
+    cursor: pointer;
+    background: #f2f2f2;
+}
+.titulo{
+    font-weight: 700;
+    font-size: 20px;
+}
+.seus-quizzes{
+    width: 1070px;
+}
+.titulo-icon{
+    display: flex;
+    align-items: center;
+}
+.add-quizz{
+    color: #EC362D;
+    border-radius: 500px;
+    font-size: 30px;
+    margin-left: 17px;
+}
+.caixa-seus-quizzes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+.todos-quizzes{
+    margin-top: 77px;
+    width: 1070px;
+}
+.caixa-todos-quizzes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+.quizz{
+    width: 340px;
+    height: 181px;
+    margin-right: 15px;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.1%, #000000 100%), url(image.png);
+    border-radius: 5px;
+}
+.quizz:hover{
+    cursor: pointer;
+}
+/*Fim TELA INICIAL*/
+
+/* SUCESSO QUIZ */
+.sucesso-quizz{
+    margin-top: 140px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 160px;
+}
+.sucesso-quizz div{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(image.png);
+    border-radius: 5px;
+    width: 500px;
+    height: 266px;
+    margin-top: 46px;
+    position: relative;
+}
+.sucesso-quizz p{
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 23px;
+    position:absolute;
+    bottom: 20px;
+    left:20px;
+}
+.sucesso-quizz button{
+    width: 220.32px;
+    height: 44px;
+    background: #EC362D;
+    border-color: #EC362D;;
+    border-radius: 15px;
+    text-align: center;
+    color: #FFF5F4;
+    font-weight: 400;
+    font-size: 21px;
+    margin-top: 45px;
+}
+.sucesso-quizz button:hover{
+    cursor: pointer;
+    background-color: #ff1919;
+}
+.sucesso-quizz span{
+    font-weight: 400;
+    font-size: 21px;
+    color: #818181;
+    margin-top: 20px;
+}
+.sucesso-quizz span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+/*Fim do SUCESSO QUIZ*/
+
+.escondido{
+    display: none;
+}
+
+
+@media(max-width:1100px){
+    /*Responsivo TELA INICIAL*/
+    .caixa-todos-quizzes,.todos-quizzes, .seus-quizzes,.caixa-seus-quizzes{
+        width: 100%;
+        justify-content: center;
+    }
+    .titulo{
+    margin-left: 15px;
+    }
+    .quizz, .caixa-sem-quiz{
+        width: 90%;
+    }
+    .titulo-icon{
+        width: 90%;
+        justify-content: space-between;
+    }
+    /*Fim do Responsivo TELA INICIAL*/
+
+    /*Responsivo TELA SUCESSO*/
+    .sucesso-quizz{
+        width: 100;
+        margin-bottom: 20px;
+    }
+    .sucesso-quizz div{
+        width:95%;
+    }
+    /*Fim do Responsivo TELA SUCESSO*/
+}
+
+/*A PARTIR DAQUI É SOBRE O DESKTOP 8*/
 .containerGlobal{
     height: 100vh;
     background-color: #FAFAFA;
 }
 
-/*INÍCIO DESKTOP 8*/
 .containerConteudo{
     width: 100%;
     margin-top: 71px;
@@ -20,7 +217,7 @@
     align-items: center;
 }
 
-header h1{
+.containerConteudo header h1{
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 1.4375rem;
@@ -80,9 +277,7 @@ header h1{
 .containerConteudo .botao button:hover{
     cursor: pointer;
 }
-/*FIM DESKTOP 8*/
 
-/*INÍCIO MEDIA QUERY DO DESKTOP 8*/
 @media(max-width: 767px){
 
     .containerConteudo main .configQuizz{
@@ -97,4 +292,4 @@ header h1{
         width: 80%;
     }
 }
-/*FIM MEDIA QUERY DO DESKTOP 8*/
+/*AQUI ACABA O DESKTOP 8*/

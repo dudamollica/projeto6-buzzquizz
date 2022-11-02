@@ -9,17 +9,47 @@
 
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
-
-        <!--LINK DA FONTE ROBOTO DO GOOGLE FONTS-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-
     </head>
 
     <body>
-        <div class="containerGlobal">
-            <!--INÍCIO DESKTOP 8-->
+        <header>BuzzQuizz</header>
+        <div class="tela-inicial">
+
+        <div class="caixa-sem-quizz">
+            <p>Você não criou nenhum </br> quizz ainda :(</p>
+            <button>Criar Quizz</button>
+        </div> 
+
+        <div class="seus-quizzes escondido">
+        <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
+        <ion-icon class="add-quizz" name="add-circle"></ion-icon></div>
+        <div class="caixa-seus-quizzes">
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+        </div> <!--caixa para colocar seus quizzes-->
+        </div>
+
+        <div class="todos-quizzes">
+        <span class="titulo">Todos os Quizzes</span>
+        <div class="caixa-todos-quizzes">
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+            <div class="quizz"></div>
+        </div> <!--caixa para colocar todos os quizzes-->
+        </div>
+
+        </div>
+        <!-- fim da tela inicial -->
+
+        <!--INÍCIO DESKTOP 8-->
+        <div class="containerGlobal escondido">
+    
             <div class="containerConteudo">
                 <header>
                     <h1>Comece pelo começo</h1>
@@ -42,10 +72,20 @@
                     </button>
                 </div>
             </div>
-            <!--FIM DESKTOP 8-->
+
         </div>
+        <!--FIM DESKTOP 8-->
 
-        <script src="./scripts/sript.js"></script>
+        <!--Desktop 11-->
+        <div class="sucesso-quizz escondido">
+            <h1 class="titulo">Seu quizz está pronto!</h1>
+            <div class="sucesso-img-quizz"><p class="sucesso-titulo-quizz">Titulo do QUIZZ</p></div>
+            <button>Acessar Quizz</button>
+            <span>Voltar pra home</span>
+        </div>
+        <!--Fim Desktop 11-->
+
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+         <script src="./scripts/sript.js"></script>
     </body>
-
 </html>
