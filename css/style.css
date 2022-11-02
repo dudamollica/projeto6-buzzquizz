@@ -402,15 +402,6 @@ body {
     border: none;
     color: #818181;
 }
-
-
-
-
-
-
-
-
-
 /* FIM QUIZZ EM ANDAMENTO */
 
 
@@ -456,6 +447,211 @@ body {
 
     /*Fim do Responsivo TELA SUCESSO*/
 }
+
+
+/* RESPOSIVO DA TELA DE UM QUIZZ */
+
+/* QUIZZ EM ANDAMENTO */
+.quizz-executando {
+    width: 100vw;
+    margin-top: 69px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* div do título */
+.quizz-executando .titulo-desse-quizz {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    margin-bottom: 143px;
+}
+
+/* título do quizz em andanmento */
+.quizz-executando .titulo-desse-quizz h1 {
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    margin-top: 5rem;
+}
+
+/* Imagem do titulo */
+.quizz-executando .titulo-desse-quizz img {
+    width: 100%;
+    height: 227px;
+    object-fit: cover;
+    filter: brightness(40%);
+    object-position: 0 30%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+/* pergunta do quizz */
+.quizz-executando .quizz-executando-pergunta {
+    width: 759px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    justify-self: center;
+    margin-bottom: 48px;
+}
+
+/* título da pergunta */
+.quizz-executando .quizz-executando-pergunta .titulo-da-pergunta {
+    height: 89px;
+    background-color: #EC362D;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+/* opções de resposta */
+.quizz-executando-pergunta .opcoes-da-pergunta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* img da opção */
+.quizz-executando-pergunta .opcoes-da-pergunta .caixa-de-opcao img {
+    height: 175px;
+}
+
+.quizz-executando-pergunta .opcoes-da-pergunta .caixa-de-opcao {
+    margin: 10px;
+}
+
+
+/* título da opção */
+.quizz-executando-pergunta .opcoes-da-pergunta .caixa-de-opcao p {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+/* caixas de opção desmarcadas */
+.desmarcada {
+    filter: opacity(30%);
+}
+
+/* cor de texto para opções erradas */
+.texto-errado {
+    color: #FF4B4B;
+}
+
+/* cor de texto para opções certas */
+.texto-certo {
+    color: #009C22;
+}
+
+.feedback-do-quizz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* resultado do quizz */
+.quizz-executando-resultado {
+    width: 759px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    justify-self: center;
+    margin-bottom: 57px;
+}
+
+/* título do resultado */
+.quizz-executando-resultado .titulo-do-resultado {
+    height: 89px;
+    background-color: rgb(142, 7, 45);
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.quizz-executando-resultado .resultado-do-quizz {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.quizz-executando-resultado .resultado-do-quizz img {
+    width: 360px;
+    margin-right: 21px;
+}
+
+.quizz-executando-resultado .resultado-do-quizz p {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+}
+
+.feedback-do-quizz button {
+    width: 260.38px;
+    height: 52px;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    margin-bottom: 16px;
+}
+
+.feedback-do-quizz button:hover {
+    cursor: pointer;
+}
+
+.feedback-do-quizz .restart-button {
+    background: #EC362D;
+    border: 1px dashed #EC362D;
+    color: #FFF5F4;
+
+}
+
+.feedback-do-quizz .restart-button:hover {
+    background-color: #FF4B4B;
+}
+
+
+.feedback-do-quizz .home-button {
+    background: none;
+    border: none;
+    color: #818181;
+}
+
+
+
+/* FIM DO RESPONSIVO DA TELA DE UM QUIZZ */
+
+
+
+
+
+
+
 
 /*A PARTIR DAQUI É SOBRE O DESKTOP 8*/
 .containerGlobal{
