@@ -12,9 +12,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
     </head>
 
-    <body>
-        <header>BuzzQuizz</header>
-        <div class="tela-inicial">
+<body>
+<header class="faixa-topo">BuzzQuizz</header>
+<!--INICIO TELA INICIAL-->
+<div class="tela-inicial">
 
         <div class="caixa-sem-quizz">
             <p>Você não criou nenhum </br> quizz ainda :(</p>
@@ -24,29 +25,92 @@
         <div class="seus-quizzes escondido">
         <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
         <ion-icon class="add-quizz" name="add-circle"></ion-icon></div>
-        <div class="caixa-seus-quizzes">
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-        </div> <!--caixa para colocar seus quizzes-->
+        <ul class="caixa-seus-quizzes">
+        </ul> <!--caixa para colocar seus quizzes-->
         </div>
 
         <div class="todos-quizzes">
-        <span class="titulo">Todos os Quizzes</span>
-        <div class="caixa-todos-quizzes">
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-            <div class="quizz"></div>
-        </div> <!--caixa para colocar todos os quizzes-->
-        </div>
+            <span class="titulo">Todos os Quizzes</span>
+            <ul class="caixa-todos-quizzes">
+            </ul> <!--caixa para colocar todos os quizzes-->
+            </div>
+            </div>
+        <!-- FIM TELA INICIAL -->
 
-        </div>
-        <!-- fim da tela inicial -->
+        <div class="quizz-executando escondido">
 
+            <!-- título -->
+            <div class="titulo-desse-quizz">
+                <h1>Título do quizz</h1>
+                <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg"
+                    alt="imagem do quizz">
+            </div>
+    
+            <!-- pergunta -->
+            <div class="quizz-executando-pergunta">
+                <div class="titulo-da-pergunta">
+                    Título de alguma pergunta para o quizz em questão
+                </div>
+                <div class="opcoes-da-pergunta">
+    
+    
+                    <div class="caixa-de-opcao">
+                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                            alt="">
+                        <p>nome da opcao</p>
+                    </div>
+    
+    
+    
+                    <div class="caixa-de-opcao texto-certo">
+                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                            alt="">
+                        <p>nome da opcao</p>
+                    </div>
+    
+    
+    
+                    <div class="caixa-de-opcao desmarcada">
+                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                            alt="">
+                        <p class="texto-errado">nome da opcao</p>
+                    </div>
+    
+    
+    
+                    <div class="caixa-de-opcao">
+                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                            alt="">
+                        <p>nome da opcao</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="feedback-do-quizz">
+                <div class="quizz-executando-resultado">
+                    <div class="titulo-do-resultado">
+                        Título do resultado do quiz com %
+                    </div>
+    
+                    <div class="resultado-do-quizz">
+                        <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
+                            alt="">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nulla expedita facere sunt deleniti
+                            soluta ad laudantium repudiandae vitae sequi, veritatis labore, dignissimos possimus eius sed
+                            nesciunt? Ea, quia commodi!</p>
+    
+                    </div>
+                </div>
+    
+                <button class="restart-button">Reiniciar Quizz</button>
+                <button class="home-button">Voltar para Home</button>
+            </div>
+    
+    
+    
+        </div>
+       
+        
         <!--INÍCIO DESKTOP 8-->
         <div class="containerGlobal">
     
@@ -85,7 +149,8 @@
         </div>
         <!--Fim Desktop 11-->
 
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-         <script src="./scripts/sript.js"></script>
+        <script src="./scripts/sript.js"></script>
     </body>
 </html>
