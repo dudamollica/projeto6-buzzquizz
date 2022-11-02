@@ -18,8 +18,8 @@ function randerizarTodosQuizzes(){
     for (let i=0; i<listaTodosQuizzes.length;i++){
     let quizz = listaTodosQuizzes[i]//depois colocar array filtrada 
     caixaTodosQuizzes.innerHTML+= `<li class="quizz">
-    <div class="background"><img class="background" src="${quizz.image}"/></div>
-    <div class="degrade"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
+    <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
+    <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
     }
 }
 //FIM DA LISTAGEM DE TODOS OS QUIZZES
