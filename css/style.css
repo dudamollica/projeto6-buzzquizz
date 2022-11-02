@@ -3,12 +3,6 @@ body{
     font-family: roboto;
     width: 100%;
 }
-.tela-inicial{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
 header{
     background: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -25,26 +19,35 @@ header{
     position:fixed;
     top:0;
 }
-.caixa-sem-quiz{
+
+/*TELA INICIAL*/
+.tela-inicial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 146px;
+    margin-bottom: 140px;
+}
+.caixa-sem-quizz{
     background: #FAFAFA;
     border: 1px dashed #D4D4D4;
     border-radius: 5px;
     width: 1051px;
     height: 181px;
-    margin-top: 146px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.caixa-sem-quiz p{
+.caixa-sem-quizz p{
     font-weight: 400;
     font-size: 20px;
     color: #B9B9B9; 
     margin-bottom: 34px;   
     text-align: center;
 }
-.caixa-sem-quiz button{
+.caixa-sem-quizz button{
     text-align: center;
     color: #EC362D;
     width: 151px;
@@ -55,12 +58,15 @@ header{
     border: 1px dashed #EC362D;
     border-radius: 50px;
 }
+.caixa-sem-quizz button:hover{
+    cursor: pointer;
+    background: #f2f2f2;
+}
 .titulo{
     font-weight: 700;
     font-size: 20px;
 }
 .seus-quizzes{
-    margin-top: 69px;
     width: 1070px;
 }
 .titulo-icon{
@@ -97,11 +103,71 @@ header{
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.1%, #000000 100%), url(image.png);
     border-radius: 5px;
 }
+.quizz:hover{
+    cursor: pointer;
+}
+/*Fim TELA INICIAL*/
+
+/* SUCESSO QUIZ */
+.sucesso-quizz{
+    margin-top: 140px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 160px;
+}
+.sucesso-quizz div{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(image.png);
+    border-radius: 5px;
+    width: 500px;
+    height: 266px;
+    margin-top: 46px;
+    position: relative;
+}
+.sucesso-quizz p{
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 23px;
+    position:absolute;
+    bottom: 20px;
+    left:20px;
+}
+.sucesso-quizz button{
+    width: 220.32px;
+    height: 44px;
+    background: #EC362D;
+    border-color: #EC362D;;
+    border-radius: 15px;
+    text-align: center;
+    color: #FFF5F4;
+    font-weight: 400;
+    font-size: 21px;
+    margin-top: 45px;
+}
+.sucesso-quizz button:hover{
+    cursor: pointer;
+    background-color: #ff1919;
+}
+.sucesso-quizz span{
+    font-weight: 400;
+    font-size: 21px;
+    color: #818181;
+    margin-top: 20px;
+}
+.sucesso-quizz span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+/*Fim do SUCESSO QUIZ*/
+
 .escondido{
     display: none;
 }
 
+
 @media(max-width:1100px){
+    /*Responsivo TELA INICIAL*/
     .caixa-todos-quizzes,.todos-quizzes, .seus-quizzes,.caixa-seus-quizzes{
         width: 100%;
         justify-content: center;
@@ -116,4 +182,15 @@ header{
         width: 90%;
         justify-content: space-between;
     }
+    /*Fim do Responsivo TELA INICIAL*/
+
+    /*Responsivo TELA SUCESSO*/
+    .sucesso-quizz{
+        width: 100;
+        margin-bottom: 20px;
+    }
+    .sucesso-quizz div{
+        width:95%;
+    }
+    /*Fim do Responsivo TELA SUCESSO*/
 }
