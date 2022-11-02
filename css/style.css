@@ -1,3 +1,117 @@
 body{
-    background-color: red;
+    background-color: white;
+    font-family: roboto;
+    width: 100%;
+}
+.tela-inicial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+header{
+    background: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 69px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.caixa-sem-quiz{
+    background: #FAFAFA;
+    border: 1px dashed #D4D4D4;
+    border-radius: 5px;
+    width: 1051px;
+    height: 181px;
+    margin-top: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.caixa-sem-quiz p{
+    font-weight: 400;
+    font-size: 20px;
+    color: #B9B9B9; 
+    margin-bottom: 34px;   
+    text-align: center;
+}
+.caixa-sem-quiz button{
+    text-align: center;
+    color: #EC362D;
+    width: 151px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 21px;
+    background: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+.titulo{
+    font-weight: 700;
+    font-size: 20px;
+}
+.seus-quizzes{
+    margin-top: 69px;
+    width: 1070px;
+}
+.titulo-icon{
+    display: flex;
+    align-items: center;
+}
+.add-quizz{
+    color: #EC362D;
+    border-radius: 500px;
+    font-size: 30px;
+    margin-left: 17px;
+}
+.caixa-seus-quizzes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+.todos-quizzes{
+    margin-top: 77px;
+    width: 1070px;
+}
+.caixa-todos-quizzes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+.quizz{
+    width: 340px;
+    height: 181px;
+    margin-right: 15px;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.1%, #000000 100%), url(image.png);
+    border-radius: 5px;
+}
+.escondido{
+    display: none;
+}
+
+@media(max-width:1100px){
+    .caixa-todos-quizzes,.todos-quizzes, .seus-quizzes,.caixa-seus-quizzes{
+        width: 100%;
+        justify-content: center;
+    }
+    .titulo{
+    margin-left: 15px;
+    }
+    .quizz, .caixa-sem-quiz{
+        width: 90%;
+    }
+    .titulo-icon{
+        width: 90%;
+        justify-content: space-between;
+    }
 }
