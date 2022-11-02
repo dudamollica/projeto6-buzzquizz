@@ -48,9 +48,9 @@
         <!-- fim da tela inicial -->
 
         <!--INÍCIO DESKTOP 8-->
-        <div class="containerGlobal escondido">
+        <div class="containerGlobal">
     
-            <div class="containerConteudo">
+            <div class="containerConteudo escondido">
                 <header>
                     <h1>Comece pelo começo</h1>
                 </header>
@@ -58,16 +58,16 @@
                 <main>
                     <div class="configQuizz">
                         <ul>
-                            <li><input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
-                            <li><input type="url" placeholder="URL da imagem do seu quizz" required /></li>
-                            <li><input type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
-                            <li><input type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
-                        </ul>
+                            <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
+                            <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                            <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
+                            <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
+                        </ul>   
                     </div>
                 </main>
 
                 <div class="botao">
-                    <button>
+                    <button onclick="verificarConfigQuizz()">
                         <span>Prosseguir pra criar perguntas</span>
                     </button>
                 </div>
