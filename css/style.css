@@ -1,3 +1,100 @@
-body{
-    background-color: red;
+*{
+    box-sizing: border-box;
 }
+
+.containerGlobal{
+    height: 100vh;
+    background-color: #FAFAFA;
+}
+
+/*INÍCIO DESKTOP 8*/
+.containerConteudo{
+    width: 100%;
+    margin-top: 71px;
+}
+
+.containerConteudo header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.4375rem;
+    line-height: 1.6875rem;
+    width: 14rem;
+    height: 1.6875rem;
+
+}
+
+.containerConteudo main{
+    width: 100%;
+    margin-top: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerConteudo main .configQuizz{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin-bottom: 85px;
+}
+
+.configQuizz ul li input{
+    font-family: 'Roboto', sans-serif;
+    width: 38vw;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+    margin-top: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 6px;
+}
+
+.containerConteudo .botao{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerConteudo .botao button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4375rem;
+    width: auto;
+    padding: 20px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+}
+
+.containerConteudo .botao button:hover{
+    cursor: pointer;
+}
+/*FIM DESKTOP 8*/
+
+/*INÍCIO MEDIA QUERY DO DESKTOP 8*/
+@media(max-width: 767px){
+
+    .containerConteudo main .configQuizz{
+        width: 100%;
+    }
+
+    .configQuizz ul li input{
+        width: 100%;
+    }
+
+    .containerConteudo .botao button{
+        width: 80%;
+    }
+}
+/*FIM MEDIA QUERY DO DESKTOP 8*/

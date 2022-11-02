@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetão BuzzQuizz</title>
 
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projetão BuzzQuizz</title>
 
-</head>
-<body>
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/style.css">
 
-    <script src="./scripts/sript.js"></script>
-</body>
+        <!--LINK DA FONTE ROBOTO DO GOOGLE FONTS-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div class="containerGlobal">
+            <!--INÍCIO DESKTOP 8-->
+            <div class="containerConteudo">
+                <header>
+                    <h1>Comece pelo começo</h1>
+                </header>
+
+                <main>
+                    <div class="configQuizz">
+                        <ul>
+                            <li><input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
+                            <li><input type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                            <li><input type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
+                            <li><input type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
+                        </ul>
+                    </div>
+                </main>
+
+                <div class="botao">
+                    <button>
+                        <span>Prosseguir pra criar perguntas</span>
+                    </button>
+                </div>
+            </div>
+            <!--FIM DESKTOP 8-->
+        </div>
+
+        <script src="./scripts/sript.js"></script>
+    </body>
+
 </html>
