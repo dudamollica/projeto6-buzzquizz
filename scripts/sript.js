@@ -39,6 +39,14 @@ function abrirQuiz(quizzClicado){
     telaInicial.classList.add("escondido") 
     let quizzExecutando=document.querySelector(".quizz-executando")
     quizzExecutando.classList.remove("escondido")
+
+    //para aparecer as infos do quizz que clicou
+    let tituloQuizz=document.querySelector(".titulo-desse-quizz h1")
+    tituloQuizz.innerHTML=""
+    tituloQuizz.innerHTML+=quizz.title
+    let imgTituloQuizz=document.querySelector(".titulo-desse-quizz img")
+    imgTituloQuizz.setAttribute('src', quizz.image)
+    imgTituloQuizz.scrollIntoView()
     
     //para gerar as perguntas do quizz
     let quizzExecutandoPergunta=document.querySelector(".quizz-executando-pergunta")
@@ -65,13 +73,6 @@ function abrirQuiz(quizzClicado){
         </div>`
      }
     }
-
-    //para aparecer as infos do quizz que clicou
-    let tituloQuizz=document.querySelector(".titulo-desse-quizz h1")
-    tituloQuizz.innerHTML=""
-    tituloQuizz.innerHTML+=quizz.title
-    let imgTituloQuizz=document.querySelector(".titulo-desse-quizz img")
-    imgTituloQuizz.setAttribute('src', quizz.image)
  }
 }
 }
