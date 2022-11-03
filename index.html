@@ -15,7 +15,7 @@
 <body>
 <header class="faixa-topo">BuzzQuizz</header>
 <!--INICIO TELA INICIAL-->
-<div class="tela-inicial">
+<div class="tela-inicial ">
 
         <div class="caixa-sem-quizz">
             <p>Você não criou nenhum </br> quizz ainda :(</p>
@@ -37,13 +37,14 @@
             </div>
         <!-- FIM TELA INICIAL -->
 
+        <!--INICIO QUIZZ EXECUTANDO-->
         <div class="quizz-executando escondido">
 
             <!-- título -->
             <div class="titulo-desse-quizz">
                 <h1>Título do quizz</h1>
                 <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg"
-                    alt="imagem do quizz">
+                    alt="imagem do quizz"/>
             </div>
     
             <!-- pergunta -->
@@ -86,7 +87,7 @@
                 </div>
             </div>
     
-            <div class="feedback-do-quizz">
+            <div class="feedback-do-quizz escondido">
                 <div class="quizz-executando-resultado">
                     <div class="titulo-do-resultado">
                         Título do resultado do quiz com %
@@ -103,18 +104,17 @@
                 </div>
     
                 <button class="restart-button">Reiniciar Quizz</button>
-                <button class="home-button">Voltar para Home</button>
+                <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
             </div>
     
-    
-    
         </div>
+        <!--FIM QUIZZ EXECUTANDO-->
        
         
         <!--INÍCIO DESKTOP 8-->
-        <div class="containerGlobal escondido">
+        <div class="containerGlobal">
     
-            <div class="containerConteudo">
+            <div class="containerConteudo escondido">
                 <header>
                     <h1>Comece pelo começo</h1>
                 </header>
@@ -122,16 +122,16 @@
                 <main>
                     <div class="configQuizz">
                         <ul>
-                            <li><input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
-                            <li><input type="url" placeholder="URL da imagem do seu quizz" required /></li>
-                            <li><input type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
-                            <li><input type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
-                        </ul>
+                            <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
+                            <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                            <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
+                            <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
+                        </ul>   
                     </div>
                 </main>
 
                 <div class="botao">
-                    <button>
+                    <button onclick="verificarConfigQuizz()">
                         <span>Prosseguir pra criar perguntas</span>
                     </button>
                 </div>
