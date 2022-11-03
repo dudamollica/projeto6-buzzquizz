@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projetão BuzzQuizz</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetão BuzzQuizz</title>
 
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    </head>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+</head>
 
 <body>
-<header class="faixa-topo">BuzzQuizz</header>
-<!--INICIO TELA INICIAL-->
-<div class="tela-inicial ">
+    <header class="faixa-topo">BuzzQuizz</header>
+    <!--INICIO TELA INICIAL-->
+    <div class="tela-inicial ">
 
         <div class="caixa-sem-quizz">
             <p>Você não criou nenhum </br> quizz ainda :(</p>
             <button>Criar Quizz</button>
-        </div> 
+        </div>
 
         <div class="seus-quizzes escondido">
-        <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
-        <ion-icon class="add-quizz" name="add-circle"></ion-icon></div>
-        <ul class="caixa-seus-quizzes">
-        </ul> <!--caixa para colocar seus quizzes-->
+            <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
+                <ion-icon class="add-quizz" name="add-circle"></ion-icon>
+            </div>
+            <ul class="caixa-seus-quizzes">
+            </ul>
+            <!--caixa para colocar seus quizzes-->
         </div>
 
         <div class="todos-quizzes">
@@ -109,48 +113,54 @@
     
         </div>
         <!--FIM QUIZZ EXECUTANDO-->
-       
-        
-        <!--INÍCIO DESKTOP 8-->
-        <div class="containerGlobal">
-    
-            <div class="containerConteudo escondido">
-                <header>
-                    <h1>Comece pelo começo</h1>
-                </header>
 
-                <main>
-                    <div class="configQuizz">
-                        <ul>
-                            <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
-                            <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
-                            <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
-                            <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
-                        </ul>   
-                    </div>
-                </main>
 
-                <div class="botao">
-                    <button onclick="verificarConfigQuizz()">
-                        <span>Prosseguir pra criar perguntas</span>
-                    </button>
+    <!--INÍCIO DESKTOP 8-->
+    <div class="containerGlobal">
+
+        <div class="containerConteudo escondido">
+            <header>
+                <h1>Comece pelo começo</h1>
+            </header>
+
+            <main>
+                <div class="configQuizz">
+                    <ul>
+                        <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20"
+                                maxlength="65" required /></li>
+                        <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                        <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz"
+                                min="3" required /></li>
+                        <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2"
+                                required /></li>
+                    </ul>
                 </div>
+            </main>
+
+            <div class="botao">
+                <button onclick="verificarConfigQuizz()">
+                    <span>Prosseguir pra criar perguntas</span>
+                </button>
             </div>
-
         </div>
-        <!--FIM DESKTOP 8-->
 
-        <!--Desktop 11-->
-        <div class="sucesso-quizz escondido">
-            <h1 class="titulo">Seu quizz está pronto!</h1>
-            <div class="sucesso-img-quizz"><p class="sucesso-titulo-quizz">Titulo do QUIZZ</p></div>
-            <button>Acessar Quizz</button>
-            <span>Voltar pra home</span>
+    </div>
+    <!--FIM DESKTOP 8-->
+
+    <!--Desktop 11-->
+    <div class="sucesso-quizz escondido">
+        <h1 class="titulo">Seu quizz está pronto!</h1>
+        <div class="sucesso-img-quizz">
+            <p class="sucesso-titulo-quizz">Titulo do QUIZZ</p>
         </div>
-        <!--Fim Desktop 11-->
+        <button>Acessar Quizz</button>
+        <span>Voltar pra home</span>
+    </div>
+    <!--Fim Desktop 11-->
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-        <script src="./scripts/sript.js"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="./scripts/sript.js"></script>
+</body>
+
 </html>
