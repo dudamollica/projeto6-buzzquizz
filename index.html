@@ -17,7 +17,7 @@
 <body>
     <header class="faixa-topo">BuzzQuizz</header>
     <!--INICIO TELA INICIAL-->
-    <div class="tela-inicial escondido">
+    <div class="tela-inicial ">
 
         <div class="caixa-sem-quizz">
             <p>Você não criou nenhum </br> quizz ainda :(</p>
@@ -42,7 +42,7 @@
     </div>
     <!-- FIM TELA INICIAL -->
 
-    <div class="quizz-executando">
+    <div class="quizz-executando escondido">
 
         <!-- título -->
         <div class="titulo-desse-quizz">
@@ -100,10 +100,11 @@
                 <div class="resultado-do-quizz">
                     <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
                         alt="">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nulla expedita facere sunt deleniti
-                        soluta ad laudantium repudiandae vitae sequi, veritatis labore, dignissimos possimus eius sed
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nulla expedita facere sunt
+                        deleniti
+                        soluta ad laudantium repudiandae vitae sequi, veritatis labore, dignissimos possimus
+                        eius sed
                         nesciunt? Ea, quia commodi!</p>
-
                 </div>
             </div>
 
@@ -116,10 +117,11 @@
     </div>
 
 
-    <!--INÍCIO DESKTOP 8-->
-    <div class="containerGlobal escondido">
 
-        <div class="containerConteudo">
+    <!--INÍCIO DESKTOP 8-->
+    <div class="containerGlobal">
+
+        <div class="containerConteudo escondido">
             <header>
                 <h1>Comece pelo começo</h1>
             </header>
@@ -127,17 +129,19 @@
             <main>
                 <div class="configQuizz">
                     <ul>
-                        <li><input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65"
+                        <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20"
+                                maxlength="65" required /></li>
+                        <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                        <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz"
+                                min="3" required /></li>
+                        <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2"
                                 required /></li>
-                        <li><input type="url" placeholder="URL da imagem do seu quizz" required /></li>
-                        <li><input type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
-                        <li><input type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
                     </ul>
                 </div>
             </main>
 
             <div class="botao">
-                <button>
+                <button onclick="verificarConfigQuizz()">
                     <span>Prosseguir pra criar perguntas</span>
                 </button>
             </div>
