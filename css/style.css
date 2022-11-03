@@ -434,28 +434,28 @@ body {
 @media(max-width:1100px) {
 
     /*Responsivo TELA INICIAL*/
-    .caixa-todos-quizzes,
-    .todos-quizzes,
-    .seus-quizzes,
-    .caixa-seus-quizzes {
+    .tela-inicial>.todos-quizzes,
+    .tela-inicial>.seus-quizzes,
+    .todos-quizzes>.caixa-todos-quizzes,
+    .seus-quizzes>.caixa-seus-quizzes {
         width: 100%;
         justify-content: center;
     }
 
-    .titulo {
+    .titulo-icon>.titulo,
+    .todos-quizzes>.titulo {
         margin-left: 15px;
     }
 
-    .quizz,
-    .caixa-sem-quizz {
+    .caixa-todos-quizzes>.quizz,
+    .tela-inicial>.caixa-sem-quizz {
         width: 90%;
     }
 
-    .titulo-icon {
+    .seus-quizzes>.titulo-icon {
         width: 90%;
         justify-content: space-between;
     }
-
     /*Fim do Responsivo TELA INICIAL*/
 
     /*Responsivo TELA SUCESSO*/

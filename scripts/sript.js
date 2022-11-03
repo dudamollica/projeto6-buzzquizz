@@ -2,6 +2,7 @@
 let listaTodosQuizzes=[];
 //Fim das Variáveis Globais
 
+
 //LISTAGEM DE TODOS OS QUIZZES
 const todosquizzesPromise= axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
 todosquizzesPromise.then(quizzesData)
@@ -23,7 +24,6 @@ function randerizarTodosQuizzes(){
     }
 }
 //FIM DA LISTAGEM DE TODOS OS QUIZZES
-
 
 
 //ABRIR UM QUIZZ
