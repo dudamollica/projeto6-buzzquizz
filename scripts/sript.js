@@ -1,5 +1,8 @@
 //Variáveis Globais
 let listaTodosQuizzes=[];
+let quizzEscolhido;
+let fimQuizz=0;
+let acertos=0;
 //Fim das Variáveis Globais
 
 
@@ -30,9 +33,10 @@ function randerizarTodosQuizzes(){
 function abrirQuiz(quizzClicado){
     let idQuizzClicado=Number(quizzClicado.id)
  for (let i=0;i<listaTodosQuizzes.length;i++){
-    let quizz= listaTodosQuizzes[i]
+    quizz= listaTodosQuizzes[i]
     let quizzID=quizz.id
     if(quizzID===idQuizzClicado){
+    quizzEscolhido=quizz
     console.log(quizz)
     //para aparecer a tela do quizz
     let telaInicial= document.querySelector(".tela-inicial")
@@ -47,17 +51,18 @@ function abrirQuiz(quizzClicado){
     let imgTituloQuizz=document.querySelector(".titulo-desse-quizz img")
     imgTituloQuizz.setAttribute('src', quizz.image)
     imgTituloQuizz.scrollIntoView()
-    
+
     //para gerar as perguntas do quizz
     let quizzExecutandoPergunta=document.querySelector(".quizz-executando-pergunta")
         quizzExecutandoPergunta.innerHTML=""
     for (let i=0;i<quizz.questions.length;i++){
         quizzExecutandoPergunta.innerHTML+=
-        `<div id="${i+100}"class="titulo-da-pergunta">${quizz.questions[i].title}</div>
+        `<div id="corTitulo${i}"class="titulo-da-pergunta">${quizz.questions[i].title}</div>
          <ul id="${i}" class="opcoes-da-pergunta"></ul>`
-       let titulo=document.getElementById(`${i+100}`) 
+       let titulo=document.getElementById(`corTitulo${i}`) 
         titulo.style.backgroundColor=quizz.questions[i].color
     }
+
     //Embaralhar as Respostas
     function comparador() { 
     return (Math.random() - 0.5) }
@@ -66,23 +71,74 @@ function abrirQuiz(quizzClicado){
         quizz.questions[i].answers.sort(comparador)
     let respostaPergunta=document.getElementById(`${i}`) 
      for(let o=0;o<quizz.questions[i].answers.length;o++){
-        respostaPergunta.innerHTML+=`<div class="caixa-de-opcao">
+        respostaPergunta.innerHTML+=
+        `<div class="caixa-de-opcao" id="${quizz.questions[i].answers[o].isCorrectAnswer}" onclick="selecionarOpcao(this)">
         <img src="${quizz.questions[i].answers[o].image}"
             alt="">
         <p>${quizz.questions[i].answers[o].text}</p>
         </div>`
      }
+     }
     }
- }
-}
+} 
 }
 //FIM DO ABRIR UM QUIZZ
 
 
-//SAIR DO QUIZZ PARA HOME
+//SELEÇÃO DA RESPOSTA
+function selecionarOpcao(opcao){
+    if (!opcao.classList.contains("naoClicaMais")){
+    fimQuizz+=1
+    let opcaoID= opcao.id
+    if (opcaoID=="true"){
+    opcao.classList.add("texto-certo")
+    opcao.classList.add("naoClicaMais")
+    acertos+=1
+    }
+    else if(opcaoID=="false"){
+    opcao.classList.add("texto-errado")
+    opcao.classList.add("naoClicaMais")
+    }
+    for (let i=0;i<quizzEscolhido.questions.length;i++){
+        let pergunta=document.getElementById(`${i}`)
+        if (opcao.parentNode.id==i){
+        let todasRespostas=pergunta.querySelectorAll("div")
+        for(o=0;o<todasRespostas.length;o++){
+        if(todasRespostas[o]!=opcao){
+        todasRespostas[o].classList.add("desmarcada")
+        todasRespostas[o].classList.add("naoClicaMais")
+        if(todasRespostas[o].id=="true"){
+        todasRespostas[o].classList.add("texto-certo")
+        }
+        else{
+        todasRespostas[o].classList.add("texto-errado")
+    }//FAZER SCROLL PARA PRÓXIMA PERGUNTA
+}}}
+    }
+    console.log(fimQuizz)
+    console.log(acertos)
+    if(fimQuizz===quizzEscolhido.questions.length){
+        feedbackQuizz()
+    }
+}
+}
+//FIM DA SELEÇÃO DA RESPOSTA
+
+//FEEDBACK DO QUIZZ APARECE
+function feedbackQuizz(){
+    let feedbackQuizz=document.querySelector(".feedback-do-quizz")
+    feedbackQuizz.classList.remove("escondido")
+    feedbackQuizz.scrollIntoView()
+}
+
+//para reiniciar o quizz
+
+
+//sair do quizz para home
 function sairQuizzParaHome(){
     window.location.reload()
 }
+//FIM DO FEEDBACK DO QUIZZ
 
 
 //INÍCIO JAVASCRIPT DO DESKTOP 8
