@@ -205,7 +205,6 @@ function abrirQuiz(quizzClicado) {
 function feedbackQuizz(){
     let paginaFeedback=document.querySelector(".feedback-do-quizz")
     let porcentagemDeAcerto= Math.round((acertos*100)/quizzEscolhido.questions.length)
-    console.log(porcentagemDeAcerto)
     for (let i=0;i<quizz.levels.length;i++){
     if (porcentagemDeAcerto>=quizzEscolhido.levels[i].minValue){ 
     paginaFeedback.innerHTML=""
