@@ -6,6 +6,83 @@ let acertos=0;
 let scroll;
 //Fim das Variáveis Globais
 
+// quizz para testes
+let quizzTeste = {
+    title: "Título do quizz",
+    image: "https://http.cat/411.jpg",
+    questions: [
+        {
+            title: "Título da pergunta 1",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "Título da pergunta 2",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "Título da pergunta 3",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        }
+    ],
+    levels: [
+        {
+            title: "Título do nível 1",
+            image: "https://http.cat/411.jpg",
+            text: "Descrição do nível 1",
+            minValue: 0
+        },
+        {
+            title: "Título do nível 2",
+            image: "https://http.cat/412.jpg",
+            text: "Descrição do nível 2",
+            minValue: 50
+        }
+    ]
+}
+// fim da variável de quizz para teste
+
+
+
+
+
+
+
 
 //LISTAGEM DE TODOS OS QUIZZES
 const todosquizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -212,3 +289,67 @@ const verificarConfigQuizz = () => {
 }
 //FIM JAVASCRIPT DO DESKTOP 8
 
+
+
+// DEKTOP 10
+
+// abre a ul para ver as configurações de cada nível de quizz
+function abrirCaixaAbaixo(marca) {
+    marca.classList.add("escondido");
+    const divAvo = ((marca.parentNode).parentNode);
+    const filhos = divAvo.children;
+    filhos[1].classList.remove("escondido");
+}
+
+
+// verifica se os níveis foram preenchidos de forma correta, se sim, envia o quiz para o servidor
+function verificarNivelQuizz() {
+    const niveis = document.querySelectorAll(".configQuizz-niveis");
+    let validador = 0
+    for (let i = 0; i < niveis.length; i++) {
+        let n = 0
+
+        let nivelTitulo = ((niveis[i].children)[1].children[0]).children[0].value;
+        let nivelNota = ((niveis[i].children)[1].children[1]).children[0].value;
+        let nivelUrl = ((niveis[i].children)[1].children[2]).children[0].value;
+        let nivelDesc = ((niveis[i].children)[1].children[3]).children[0].value;
+
+        if (nivelTitulo.length >= 10) {
+            n++;
+        }
+        else {
+            alert(`Nivel ${i + 1}: o titulo precisa ter pelo menos 10 caracteres`);
+        }
+
+        if (nivelNota >= 0 && nivelNota <= 100) {
+            n++;
+        }
+        else {
+            alert(`Nivel ${i + 1}: a porcetagem é entre 0 e 100`);
+        }
+
+        let padraoURL = /^https:\/\//i;
+        if (padraoURL.test(nivelUrl)) {
+            n++;
+        }
+        else {
+            alert(`Nivel ${i + 1}: url da imagem inválida`);
+        }
+        if (nivelDesc.length >= 30) {
+            n++;
+        }
+        else {
+            alert(`Nivel ${i + 1}: A descrição precisa de pelo menos 30 caracteres`);
+        }
+
+        if (n >= 4) {
+            validador++;
+        }
+    }
+
+    if (validador == niveis.length) {
+        alert("prencheu certo os niveis!");
+    }
+    else ("preencha corretamente os campos");
+
+}

@@ -157,36 +157,38 @@
 
             <main>
                 <div class="configQuizz-niveis">
-                    <div class="descricao-da-config"><p>Nível 1</p> <ion-icon class="escondido" name="create-outline"></ion-icon></div>
-                    <ul>
-                        <li><input class="tituloQuizz" type="text" placeholder="Título do nível" minlength="10"
+                    <div class="descricao-da-config">
+                        <p>Nível 1</p>
+                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
+                    </div>
+                    <ul class="escondido">
+                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
                                 required /></li>
-                        <li><input class="urlQuizz" type="number" placeholder="% de acerto mínima" min="0" max="100"
-                                required /></li>
-                        <li><input class="perguntaQuizz" type="url" placeholder="URL da imagem do nível" required />
+                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
+                                max="100" required /></li>
+                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
                         </li>
-                        <li><textarea cols="30" rows="1" class="nivelQuizz" type="text" placeholder="Descrição do nível"
-                                minlength="30"></textarea>
+                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
+                                placeholder="Descrição do nível" minlength="30" required></textarea>
                         </li>
-
-
                     </ul>
                 </div>
 
                 <div class="configQuizz-niveis">
-                    <div class="descricao-da-config"><p>Nível 2</p> <ion-icon name="create-outline"></ion-icon></div>
+                    <div class="descricao-da-config">
+                        <p>Nível 2</p>
+                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
+                    </div>
                     <ul class="escondido">
-                        <li><input class="tituloQuizz" type="text" placeholder="Título do nível" minlength="10"
+                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
                                 required /></li>
-                        <li><input class="urlQuizz" type="number" placeholder="% de acerto mínima" min="0" max="100"
-                                required /></li>
-                        <li><input class="perguntaQuizz" type="url" placeholder="URL da imagem do nível" required />
+                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
+                                max="100" required /></li>
+                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
                         </li>
-                        <li><textarea cols="30" rows="1" class="nivelQuizz" type="text" placeholder="Descrição do nível"
-                                minlength="30"></textarea>
+                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
+                                placeholder="Descrição do nível" minlength="30" required></textarea>
                         </li>
-
-
                     </ul>
                 </div>
 
@@ -196,7 +198,7 @@
 
 
             <div class="botao">
-                <button onclick="verificarNivelquizz()">
+                <button onclick="verificarNivelQuizz()">
                     <span>Finalizar quizz</span>
                 </button>
             </div>
