@@ -3,6 +3,7 @@ let listaTodosQuizzes=[];
 let quizzEscolhido;
 let fimQuizz=0;
 let acertos=0;
+let scroll;
 //Fim das Variáveis Globais
 
 
@@ -62,7 +63,6 @@ function abrirQuiz(quizzClicado){
        let titulo=document.getElementById(`corTitulo${i}`) 
         titulo.style.backgroundColor=quizz.questions[i].color
     }
-
     //Embaralhar as Respostas
     function comparador() { 
     return (Math.random() - 0.5) }
@@ -112,28 +112,57 @@ function selecionarOpcao(opcao){
         }
         else{
         todasRespostas[o].classList.add("texto-errado")
-    }//FAZER SCROLL PARA PRÓXIMA PERGUNTA
-}}}
-    }
-    console.log(fimQuizz)
-    console.log(acertos)
+    } 
+      if (!pergunta.classList.contains("naoClicaMais")){
+     scroll= pergunta.lastElementChild
+     setTimeout(function() { scroll.scrollIntoView()}, 2000)}
+}}}}
     if(fimQuizz===quizzEscolhido.questions.length){
-        feedbackQuizz()
+        setTimeout(function() {feedbackQuizz()}, 2000)
     }
-}
-}
+}}
 //FIM DA SELEÇÃO DA RESPOSTA
 
-//FEEDBACK DO QUIZZ APARECE
+
+//FEEDBACK DO QUIZZ
 function feedbackQuizz(){
-    let feedbackQuizz=document.querySelector(".feedback-do-quizz")
-    feedbackQuizz.classList.remove("escondido")
-    feedbackQuizz.scrollIntoView()
+    let paginaFeedback=document.querySelector(".feedback-do-quizz")
+    let porcentagemDeAcerto= Math.round((acertos*100)/quizzEscolhido.questions.length)
+    console.log(porcentagemDeAcerto)
+    for (let i=0;i<quizz.levels.length;i++){
+    if (porcentagemDeAcerto>=quizzEscolhido.levels[i].minValue){ 
+    paginaFeedback.innerHTML=""
+    paginaFeedback.innerHTML+=`
+    <div class="quizz-executando-resultado">
+        <div class="titulo-do-resultado">
+        ${porcentagemDeAcerto}% de acerto: ${quizzEscolhido.levels[i].title}
+        </div>
+
+        <div class="resultado-do-quizz">
+            <img src="${quizzEscolhido.levels[i].image}"
+                alt="">
+            <p>${quizzEscolhido.levels[i].text}</p>
+
+        </div>
+    </div>
+
+    <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+    <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
+</div>`}}
+let feedbackQuizz=document.querySelector(".feedback-do-quizz")
+feedbackQuizz.classList.remove("escondido")
+feedbackQuizz.scrollIntoView()
 }
 
 //para reiniciar o quizz
-
-
+function reiniciarQuizz(){
+abrirQuiz(quizzEscolhido)
+fimQuizz=0;
+acertos=0;
+console.log(acertos)
+let feedbackQuizz=document.querySelector(".feedback-do-quizz")
+feedbackQuizz.classList.add("escondido")
+}
 //sair do quizz para home
 function sairQuizzParaHome(){
     window.location.reload()
