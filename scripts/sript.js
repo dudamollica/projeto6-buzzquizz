@@ -91,7 +91,7 @@ function quizzesData(resposta) {
     randerizarTodosQuizzes()
 }
 function randerizarTodosQuizzes() {
-    caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
+    let caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
     caixaTodosQuizzes.innerHTML = ""
     //filtrar mensagens que o usuário criou
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
@@ -108,7 +108,7 @@ function randerizarTodosQuizzes() {
 function abrirQuiz(quizzClicado) {
     let idQuizzClicado = Number(quizzClicado.id)
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
-        quizz = listaTodosQuizzes[i]
+        let quizz = listaTodosQuizzes[i]
         let quizzID = quizz.id
         if (quizzID === idQuizzClicado) {
             quizzEscolhido = quizz
@@ -356,21 +356,22 @@ const verificarConfigQuizz = () => {
 
 //ATIVANDO FUNÇÃO DEPOIS QUE CLICAR NO BOTÃO
 const verificarConfigPerguntas = () => {
-    let transformador = Number(perguntaQuizz.value);
+    const transformador = Number(perguntaQuizz.value);
     let padraoURL = /^https:\/\//i;
-    let validadorTituloPergunta, validadorCorFundoPergunta, validadorRespostaCorreta,
-        validadorImagemCorreta, validadorQuantidadeRespostas1, validadorQuantidadeRespostas2,
+    let validadorTituloPergunta = 0, validadorCorFundoPergunta = 0, validadorRespostaCorreta = 0,
+        validadorImagemCorreta = 0, validadorQuantidadeRespostas1 = 0, validadorQuantidadeRespostas2 = 0,
         validadorQuantidadeRespostas3 = 0;
 
     //VERIFICAÇÃO DO TITULO DA PERGUNTA
     quizzTeste.questions = [];
-    for (let i = 0; i < perguntaQuizz; i++) {
+    for (let i = 0; i < (Number(perguntaQuizz.value)); i++) {
         (quizzTeste.questions).push({
             title: "Título da pergunta 1",
             color: "#123456",
             answers: []
         })
     }
+    console.log(quizzTeste.questions);
 
     for (let i = 1; i <= perguntaQuizz.value; i++) {
         const elemento = document.querySelector(`.textoPergunta${i}`);
@@ -444,7 +445,7 @@ const verificarConfigPerguntas = () => {
     for (let i = 1; i <= perguntaQuizz.value; i++) {
         const elemento4 = document.querySelector(`.urlImagemCorreta${i}`).value;
         if (padraoURL.test(elemento4)) {
-            quizzTeste.questions[i - 1].answers[0] = elemento4;
+            quizzTeste.questions[i - 1].answers[0].image = elemento4;
             validadorImagemCorreta++;
         }
         else {
@@ -583,14 +584,26 @@ const verificarConfigPerguntas = () => {
         }
     }
 
+    console.log(validadorTituloPergunta == transformador);
+    console.log(validadorCorFundoPergunta % transformador == 0);
+    console.log(validadorRespostaCorreta == transformador);
+    console.log(validadorImagemCorreta == transformador);
+    console.log(validadorQuantidadeRespostas1 == transformador);
+    console.log(validadorQuantidadeRespostas2 == transformador);
+    console.log(validadorQuantidadeRespostas3 == transformador);
+
+
+
     if ((validadorTituloPergunta === transformador) && (validadorCorFundoPergunta % transformador === 0)
         && (validadorRespostaCorreta === transformador) && (validadorImagemCorreta === transformador)
         && (validadorQuantidadeRespostas1 === transformador) && (validadorQuantidadeRespostas2 === transformador)
         && (validadorQuantidadeRespostas3 === transformador)) {
+        alert("entrou no if")
         const elementoVerificador = document.querySelector(".containerGlobalPerguntas");
+        console.log(elementoVerificador);
         elementoVerificador.classList.add("escondido");
 
-        //renderizarNiveis(nivelQuizz);
+        renderizarNiveis(nivelQuizz);
     }
 }
 //FIM JAVASCRIPT DO DESKTOP 9
@@ -695,11 +708,11 @@ function verificarNivelQuizz() {
 
     if (validador == niveis.length) {
         alert("prencheu certo os niveis!");
+        console.log(quizzTeste)
     }
     else {
         quizzTeste.levels = []
         alert("preencha corretamente os campos");
-        console.log(quizzTeste.levels);
     }
 
 }
