@@ -12,29 +12,29 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
     </head>
 
-<body>
-<header class="faixa-topo">BuzzQuizz</header>
-<!--INICIO TELA INICIAL-->
-<div class="tela-inicial">
+    <body>
+        <header class="faixa-topo">BuzzQuizz</header>
+        <!--INICIO TELA INICIAL-->
+        <div class="tela-inicial">
 
-        <div class="caixa-sem-quizz">
-            <p>Você não criou nenhum </br> quizz ainda :(</p>
-            <button>Criar Quizz</button>
-        </div> 
+            <div class="caixa-sem-quizz">
+                <p>Você não criou nenhum </br> quizz ainda :(</p>
+                <button>Criar Quizz</button>
+            </div> 
 
-        <div class="seus-quizzes escondido">
-        <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
-        <ion-icon class="add-quizz" name="add-circle"></ion-icon></div>
-        <ul class="caixa-seus-quizzes">
-        </ul> <!--caixa para colocar seus quizzes-->
+            <div class="seus-quizzes escondido">
+                <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
+                <ion-icon class="add-quizz" name="add-circle"></ion-icon></div>
+                <ul class="caixa-seus-quizzes">
+                </ul> <!--caixa para colocar seus quizzes-->
+            </div>
+
+            <div class="todos-quizzes">
+                <span class="titulo">Todos os Quizzes</span>
+                <ul class="caixa-todos-quizzes">
+                </ul> <!--caixa para colocar todos os quizzes-->
+            </div>
         </div>
-
-        <div class="todos-quizzes">
-            <span class="titulo">Todos os Quizzes</span>
-            <ul class="caixa-todos-quizzes">
-            </ul> <!--caixa para colocar todos os quizzes-->
-            </div>
-            </div>
         <!-- FIM TELA INICIAL -->
 
         <div class="quizz-executando escondido">
@@ -97,7 +97,8 @@
                             alt="">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nulla expedita facere sunt deleniti
                             soluta ad laudantium repudiandae vitae sequi, veritatis labore, dignissimos possimus eius sed
-                            nesciunt? Ea, quia commodi!</p>
+                            nesciunt? Ea, quia commodi!
+                        </p>
     
                     </div>
                 </div>
@@ -112,9 +113,9 @@
        
         
         <!--INÍCIO DESKTOP 8-->
-        <div class="containerGlobal">
+        <div class="containerGlobal escondido">
     
-            <div class="containerConteudo escondido">
+            <div class="containerConteudo">
                 <header>
                     <h1>Comece pelo começo</h1>
                 </header>
@@ -139,6 +140,28 @@
 
         </div>
         <!--FIM DESKTOP 8-->
+
+        <!--INÍCIO DESKTOP 9-->
+        <div class="containerGlobalPerguntas escondido">
+            
+            <div class="containerPerguntas">
+                <header>
+                    <h1>Crie suas perguntas</h1>
+                </header>
+
+                <main>
+                </main>
+
+                <div class="botao">
+                    <button onclick="verificarConfigPerguntas()">
+                        <span>Prosseguir pra criar níveis</span>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+        <!--FIM DESKTOP 9-->
 
         <!--Desktop 11-->
         <div class="sucesso-quizz escondido">
