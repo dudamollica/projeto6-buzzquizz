@@ -5,7 +5,6 @@ let nivelQuizz;
 let quizzEscolhido;
 let fimQuizz = 0;
 let acertos = 0;
-let scroll;
 //Fim das Variáveis Globais
 
 // quizz para testes
@@ -91,7 +90,7 @@ function quizzesData(resposta) {
     randerizarTodosQuizzes()
 }
 function randerizarTodosQuizzes() {
-    caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
+   let caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
     caixaTodosQuizzes.innerHTML = ""
     //filtrar mensagens que o usuário criou
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
@@ -161,46 +160,41 @@ function abrirQuiz(quizzClicado) {
 
 
 //SELEÇÃO DA RESPOSTA
-function selecionarOpcao(opcao) {
-    if (!opcao.classList.contains("naoClicaMais")) {
-        fimQuizz += 1
-        let opcaoID = opcao.id
-        if (opcaoID == "true") {
-            opcao.classList.add("texto-certo")
-            opcao.classList.add("naoClicaMais")
-            acertos += 1
-        }
-        else if (opcaoID == "false") {
-            opcao.classList.add("texto-errado")
-            opcao.classList.add("naoClicaMais")
-        }
-        for (let i = 0; i < quizzEscolhido.questions.length; i++) {
-            let pergunta = document.getElementById(`${i}`)
-            if (opcao.parentNode.id == i) {
-                let todasRespostas = pergunta.querySelectorAll("div")
-                for (o = 0; o < todasRespostas.length; o++) {
-                    if (todasRespostas[o] != opcao) {
-                        todasRespostas[o].classList.add("desmarcada")
-                        todasRespostas[o].classList.add("naoClicaMais")
-                        if (todasRespostas[o].id == "true") {
-                            todasRespostas[o].classList.add("texto-certo")
-                        }
-                        else {
-                            todasRespostas[o].classList.add("texto-errado")
-                        }
-                        if (!pergunta.classList.contains("naoClicaMais")) {
-                            scroll = pergunta.lastElementChild
-                            setTimeout(function () { scroll.scrollIntoView() }, 2000)
-                        }
-                    }
-                }
-            }
-        }
-        if (fimQuizz === quizzEscolhido.questions.length) {
-            setTimeout(function () { feedbackQuizz() }, 2000)
-        }
+function selecionarOpcao(opcao){
+    if (!opcao.classList.contains("naoClicaMais")){
+    fimQuizz+=1
+    let opcaoID= opcao.id
+    if (opcaoID=="true"){
+    opcao.classList.add("texto-certo")
+    opcao.classList.add("naoClicaMais")
+    acertos+=1
     }
-}
+    else if(opcaoID=="false"){
+    opcao.classList.add("texto-errado")
+    opcao.classList.add("naoClicaMais")
+    }
+    for (let i=0;i<quizzEscolhido.questions.length;i++){
+        let pergunta=document.getElementById(`${i}`)
+        if (opcao.parentNode.id==i){
+        let todasRespostas=pergunta.querySelectorAll("div")
+        for(o=0;o<todasRespostas.length;o++){
+        if(todasRespostas[o]!=opcao){
+        todasRespostas[o].classList.add("desmarcada")
+        todasRespostas[o].classList.add("naoClicaMais")
+        if(todasRespostas[o].id=="true"){
+        todasRespostas[o].classList.add("texto-certo")
+        }
+        else{
+        todasRespostas[o].classList.add("texto-errado")
+    } 
+      if (!pergunta.classList.contains("naoClicaMais")){
+     scroll= pergunta.lastElementChild
+     setTimeout(function() { scroll.scrollIntoView()}, 2000)}
+}}}}
+    if(fimQuizz===quizzEscolhido.questions.length){
+        setTimeout(function() {feedbackQuizz()}, 2000)
+    }
+}}
 //FIM DA SELEÇÃO DA RESPOSTA
 
 
@@ -226,8 +220,7 @@ function feedbackQuizz() {
     </div>
 
     <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-    <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
-</div>`}
+    <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>`}
     }
     let feedbackQuizz = document.querySelector(".feedback-do-quizz")
     feedbackQuizz.classList.remove("escondido")
@@ -240,6 +233,21 @@ function reiniciarQuizz() {
     acertos = 0;
     let feedbackQuizz = document.querySelector(".feedback-do-quizz")
     feedbackQuizz.classList.add("escondido")
+
+    let paginaFeedback = document.querySelector(".feedback-do-quizz")
+    paginaFeedback.innerHTML = ""
+    paginaFeedback.innerHTML += ` <div class="quizz-executando-resultado">
+    <div class="titulo-do-resultado">
+        Você não acertou a % mínima para entrar em algum nível
+    </div>
+    <div class="resultado-do-quizz">
+        <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
+            alt="">
+        <p>Meus pêsames, vc pegou um quizz de alguém que não leu corretamente os requisito</p>
+    </div>
+    <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+    <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
+</div>`
 }
 //sair do quizz para home
 function sairQuizzParaHome() {
