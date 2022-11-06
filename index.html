@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projetão BuzzQuizz</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetão BuzzQuizz</title>
 
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    </head>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+</head>
 
+<<<<<<< HEAD
     <body>
         <header class="faixa-topo">BuzzQuizz</header>
         <!--INICIO TELA INICIAL-->
@@ -34,16 +37,38 @@
                 <ul class="caixa-todos-quizzes">
                 </ul> <!--caixa para colocar todos os quizzes-->
             </div>
+=======
+<body>
+    <header class="faixa-topo">BuzzQuizz</header>
+    <!--INICIO TELA INICIAL-->
+    <div class="tela-inicial">
+
+        <div class="caixa-sem-quizz">
+            <p>Você não criou nenhum </br> quizz ainda :(</p>
+            <button>Criar Quizz</button>
+        </div>
+
+        <div class="seus-quizzes escondido">
+            <div class="titulo-icon"><span class="titulo">Seus Quizzes</span>
+                <ion-icon class="add-quizz" name="add-circle"></ion-icon>
+            </div>
+            <ul class="caixa-seus-quizzes">
+            </ul>
+            <!--caixa para colocar seus quizzes-->
+>>>>>>> 39a27015ad7150b6e7068a87247451f4f24a4019
         </div>
         <!-- FIM TELA INICIAL -->
 
+
+
+        <!--INICIO QUIZZ EXECUTANDO-->
         <div class="quizz-executando escondido">
 
             <!-- título -->
             <div class="titulo-desse-quizz">
                 <h1>Título do quizz</h1>
                 <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg"
-                    alt="imagem do quizz">
+                    alt="imagem do quizz"/>
             </div>
     
             <!-- pergunta -->
@@ -86,26 +111,31 @@
                 </div>
             </div>
     
-            <div class="feedback-do-quizz">
+            <div class="feedback-do-quizz escondido">
                 <div class="quizz-executando-resultado">
                     <div class="titulo-do-resultado">
-                        Título do resultado do quiz com %
+                        Você não acertou a % mínima para entrar em algum nível
                     </div>
     
                     <div class="resultado-do-quizz">
                         <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
                             alt="">
+<<<<<<< HEAD
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nulla expedita facere sunt deleniti
                             soluta ad laudantium repudiandae vitae sequi, veritatis labore, dignissimos possimus eius sed
                             nesciunt? Ea, quia commodi!
                         </p>
+=======
+                        <p>Meus pêsames, vc pegou um quizz de alguém que não leu corretamente os requisito</p>
+>>>>>>> 39a27015ad7150b6e7068a87247451f4f24a4019
     
                     </div>
                 </div>
     
-                <button class="restart-button">Reiniciar Quizz</button>
-                <button class="home-button">Voltar para Home</button>
+                <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
             </div>
+<<<<<<< HEAD
     
     
     
@@ -119,28 +149,43 @@
                 <header>
                     <h1>Comece pelo começo</h1>
                 </header>
+=======
+>>>>>>> 39a27015ad7150b6e7068a87247451f4f24a4019
 
-                <main>
-                    <div class="configQuizz">
-                        <ul>
-                            <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65" required /></li>
-                            <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
-                            <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz" min="3" required /></li>
-                            <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" required /></li>
-                        </ul>   
-                    </div>
-                </main>
+    </div>
+    <!--FIM QUIZZ EXECUTANDO-->
 
-                <div class="botao">
-                    <button onclick="verificarConfigQuizz()">
-                        <span>Prosseguir pra criar perguntas</span>
-                    </button>
+
+    <!--INÍCIO DESKTOP 8-->
+    <div class="containerGlobal escondido">
+
+        <div class="containerConteudo">
+            <header>
+                <h1>Comece pelo começo</h1>
+            </header>
+
+            <main>
+                <div class="configQuizz">
+                    <ul>
+                        <li><input class="tituloQuizz" type="text" placeholder="Título do seu quizz" minlength="20"
+                                maxlength="65" required /></li>
+                        <li><input class="urlQuizz" type="url" placeholder="URL da imagem do seu quizz" required /></li>
+                        <li><input class="perguntaQuizz" type="number" placeholder="Quantidade de perguntas do quizz"
+                                min="3" required /></li>
+                        <li><input class="nivelQuizz" type="number" placeholder="Quantidade de níveis do quizz" min="2"
+                                required /></li>
+                    </ul>
                 </div>
+            </main>
+
+            <div class="botao">
+                <button onclick="verificarConfigQuizz()">
+                    <span>Prosseguir pra criar perguntas</span>
+                </button>
             </div>
-
         </div>
-        <!--FIM DESKTOP 8-->
 
+<<<<<<< HEAD
         <!--INÍCIO DESKTOP 9-->
         <div class="containerGlobalPerguntas escondido">
             
@@ -169,11 +214,97 @@
             <div class="sucesso-img-quizz"><p class="sucesso-titulo-quizz">Titulo do QUIZZ</p></div>
             <button>Acessar Quizz</button>
             <span>Voltar pra home</span>
-        </div>
-        <!--Fim Desktop 11-->
+=======
+    </div>
+    <!--FIM DESKTOP 8-->
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-        <script src="./scripts/sript.js"></script>
-    </body>
+    <!-- DESKTOP 10 -->
+    <div class="criacao-dos-niveis escondido">
+
+        <div class="containerConteudo">
+            <header>
+                <h1>Agora, decida os níveis</h1>
+            </header>
+
+            <main>
+                <div class="configQuizz-niveis">
+                    <div class="descricao-da-config">
+                        <p>Nível 1</p>
+                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
+                    </div>
+                    <ul class="escondido">
+                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
+                                required /></li>
+                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
+                                max="100" required /></li>
+                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
+                        </li>
+                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
+                                placeholder="Descrição do nível" minlength="30" required></textarea>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="configQuizz-niveis">
+                    <div class="descricao-da-config">
+                        <p>Nível 2</p>
+                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
+                    </div>
+                    <ul class="escondido">
+                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
+                                required /></li>
+                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
+                                max="100" required /></li>
+                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
+                        </li>
+                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
+                                placeholder="Descrição do nível" minlength="30" required></textarea>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </main>
+
+
+
+            <div class="botao">
+                <button onclick="verificarNivelQuizz()">
+                    <span>Finalizar quizz</span>
+                </button>
+            </div>
+>>>>>>> 39a27015ad7150b6e7068a87247451f4f24a4019
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <!-- FIM DESKTOP 1O -->
+
+
+
+
+    <!--Desktop 11-->
+    <div class="sucesso-quizz escondido">
+        <h1 class="titulo">Seu quizz está pronto!</h1>
+        <div class="sucesso-img-quizz">
+            <p class="sucesso-titulo-quizz">Titulo do QUIZZ</p>
+        </div>
+        <button>Acessar Quizz</button>
+        <span>Voltar pra home</span>
+    </div>
+    <!--Fim Desktop 11-->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./scripts/sript.js"></script>
+</body>
+
 </html>
