@@ -91,7 +91,7 @@ function quizzesData(resposta) {
     randerizarTodosQuizzes()
 }
 function randerizarTodosQuizzes() {
-    caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
+    let caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
     caixaTodosQuizzes.innerHTML = ""
     //filtrar mensagens que o usuário criou
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
@@ -108,7 +108,7 @@ function randerizarTodosQuizzes() {
 function abrirQuiz(quizzClicado) {
     let idQuizzClicado = Number(quizzClicado.id)
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
-        quizz = listaTodosQuizzes[i]
+        let quizz = listaTodosQuizzes[i]
         let quizzID = quizz.id
         if (quizzID === idQuizzClicado) {
             quizzEscolhido = quizz
@@ -305,12 +305,12 @@ const verificarConfigQuizz = () => {
                         <h3>Pergunta ${i}</h3>
                     </div>
 
-                    <div>
+                    <div onclick="abrirCaixaAbaixo(this)">
                         <ion-icon class="icone" name="create-outline"></ion-icon>
                     </div>
                 </header>
 
-                <div class="caixa">
+                <div class="caixa escondido">
                     <div class="divDosInput">
                         <ul>
                             <li><input class="textoPergunta${i}" type="text" placeholder="Texto da pergunta" minlength="20" required /></li>
@@ -358,13 +358,17 @@ const verificarConfigQuizz = () => {
 const verificarConfigPerguntas = () => {
     let transformador = Number(perguntaQuizz.value);
     let padraoURL = /^https:\/\//i;
-    let validadorTituloPergunta, validadorCorFundoPergunta, validadorRespostaCorreta,
-    validadorImagemCorreta, validadorQuantidadeRespostas1, validadorQuantidadeRespostas2,
-    validadorQuantidadeRespostas3 = 0;
+    let validadorTituloPergunta = 0;
+    let validadorCorFundoPergunta = 0;
+    let validadorRespostaCorreta = 0;
+    let validadorImagemCorreta = 0;
+    let validadorQuantidadeRespostas1 = 0;
+    let validadorQuantidadeRespostas2 = 0;
+    let validadorQuantidadeRespostas3 = 0;
 
     //VERIFICAÇÃO DO TITULO DA PERGUNTA
     quizzTeste.questions = [];
-    for (let i = 0; i < perguntaQuizz; i++) {
+    for (let i = 0; i < perguntaQuizz.value; i++) {
         (quizzTeste.questions).push({
             title: "Título da pergunta 1",
             color: "#123456",
@@ -583,16 +587,24 @@ const verificarConfigPerguntas = () => {
         }
     }
 
+    console.log(validadorTituloPergunta == transformador);
+    console.log(validadorCorFundoPergunta % transformador == 0);
+    console.log(validadorRespostaCorreta == transformador);
+    console.log(validadorImagemCorreta == transformador);
+    console.log(validadorQuantidadeRespostas1 == transformador);
+    console.log(validadorQuantidadeRespostas2 == transformador);
+    console.log(validadorQuantidadeRespostas3 == transformador);
+
     if ((validadorTituloPergunta === transformador) && (validadorCorFundoPergunta % transformador === 0)
         && (validadorRespostaCorreta === transformador) && (validadorImagemCorreta === transformador)
-        && (validadorQuantidadeRespostas1 === transformador) && (validadorQuantidadeRespostas2 === transformador)
-        && (validadorQuantidadeRespostas3 === transformador)) {
+        && ((validadorQuantidadeRespostas1 === transformador) || (validadorQuantidadeRespostas2 === transformador)
+        || (validadorQuantidadeRespostas3 === transformador))) {
         const elementoVerificador = document.querySelector(".containerGlobalPerguntas");
         elementoVerificador.classList.add("escondido");
 
         alert("planeta");
 
-        //renderizarNiveis(nivelQuizz);
+        renderizarNiveis(nivelQuizz);
     }
 }
 //FIM JAVASCRIPT DO DESKTOP 9
