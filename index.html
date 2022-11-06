@@ -17,7 +17,7 @@
 <body>
     <header class="faixa-topo">BuzzQuizz</header>
     <!--INICIO TELA INICIAL-->
-    <div class="tela-inicial">
+    <div class="tela-inicial escondido">
 
         <div class="caixa-sem-quizz">
             <p>Você não criou nenhum </br> quizz ainda :(</p>
@@ -36,80 +36,81 @@
         <div class="todos-quizzes">
             <span class="titulo">Todos os Quizzes</span>
             <ul class="caixa-todos-quizzes">
-            </ul> <!--caixa para colocar todos os quizzes-->
+            </ul>
+            <!--caixa para colocar todos os quizzes-->
+        </div>
+    </div>
+    <!-- FIM TELA INICIAL -->
+
+
+
+    <!--INICIO QUIZZ EXECUTANDO-->
+    <div class="quizz-executando escondido">
+
+        <!-- título -->
+        <div class="titulo-desse-quizz">
+            <h1>Título do quizz</h1>
+            <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg"
+                alt="imagem do quizz" />
+        </div>
+
+        <!-- pergunta -->
+        <div class="quizz-executando-pergunta">
+            <div class="titulo-da-pergunta">
+                Título de alguma pergunta para o quizz em questão
             </div>
-            </div>
-        <!-- FIM TELA INICIAL -->
+            <div class="opcoes-da-pergunta">
 
 
-
-        <!--INICIO QUIZZ EXECUTANDO-->
-        <div class="quizz-executando escondido">
-
-            <!-- título -->
-            <div class="titulo-desse-quizz">
-                <h1>Título do quizz</h1>
-                <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg"
-                    alt="imagem do quizz"/>
-            </div>
-    
-            <!-- pergunta -->
-            <div class="quizz-executando-pergunta">
-                <div class="titulo-da-pergunta">
-                    Título de alguma pergunta para o quizz em questão
+                <div class="caixa-de-opcao">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                        alt="">
+                    <p>nome da opcao</p>
                 </div>
-                <div class="opcoes-da-pergunta">
-    
-    
-                    <div class="caixa-de-opcao">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
-                            alt="">
-                        <p>nome da opcao</p>
-                    </div>
-    
-    
-    
-                    <div class="caixa-de-opcao texto-certo">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
-                            alt="">
-                        <p>nome da opcao</p>
-                    </div>
-    
-    
-    
-                    <div class="caixa-de-opcao desmarcada">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
-                            alt="">
-                        <p class="texto-errado">nome da opcao</p>
-                    </div>
-    
-    
-    
-                    <div class="caixa-de-opcao">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
-                            alt="">
-                        <p>nome da opcao</p>
-                    </div>
+
+
+
+                <div class="caixa-de-opcao texto-certo">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                        alt="">
+                    <p>nome da opcao</p>
+                </div>
+
+
+
+                <div class="caixa-de-opcao desmarcada">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                        alt="">
+                    <p class="texto-errado">nome da opcao</p>
+                </div>
+
+
+
+                <div class="caixa-de-opcao">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/11/enxoval-para-gato-Copia.jpg"
+                        alt="">
+                    <p>nome da opcao</p>
                 </div>
             </div>
-    
-            <div class="feedback-do-quizz escondido">
-                <div class="quizz-executando-resultado">
-                    <div class="titulo-do-resultado">
-                        Você não acertou a % mínima para entrar em algum nível
-                    </div>
-    
-                    <div class="resultado-do-quizz">
-                        <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
-                            alt="">
-                        <p>Meus pêsames, vc pegou um quizz de alguém que não leu corretamente os requisito</p>
-    
-                    </div>
+        </div>
+
+        <div class="feedback-do-quizz escondido">
+            <div class="quizz-executando-resultado">
+                <div class="titulo-do-resultado">
+                    Você não acertou a % mínima para entrar em algum nível
                 </div>
-    
-                <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
+
+                <div class="resultado-do-quizz">
+                    <img src="https://p2.trrsf.com/image/fget/cf/648/0/images.terra.com/2022/10/14/1804648676-robbie-coltrane.jpg"
+                        alt="">
+                    <p>Meus pêsames, vc pegou um quizz de alguém que não leu corretamente os requisito</p>
+
+                </div>
             </div>
+
+            <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+            <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
+        </div>
 
     </div>
     <!--FIM QUIZZ EXECUTANDO-->
@@ -148,7 +149,7 @@
     <!--FIM DESKTOP 8-->
 
     <!-- DESKTOP 10 -->
-    <div class="criacao-dos-niveis escondido">
+    <div class="criacao-dos-niveis">
 
         <div class="containerConteudo">
             <header>
@@ -156,46 +157,7 @@
             </header>
 
             <main>
-                <div class="configQuizz-niveis">
-                    <div class="descricao-da-config">
-                        <p>Nível 1</p>
-                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
-                    </div>
-                    <ul class="escondido">
-                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
-                                required /></li>
-                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
-                                max="100" required /></li>
-                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
-                        </li>
-                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
-                                placeholder="Descrição do nível" minlength="30" required></textarea>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="configQuizz-niveis">
-                    <div class="descricao-da-config">
-                        <p>Nível 2</p>
-                        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
-                    </div>
-                    <ul class="escondido">
-                        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
-                                required /></li>
-                        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
-                                max="100" required /></li>
-                        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
-                        </li>
-                        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
-                                placeholder="Descrição do nível" minlength="30" required></textarea>
-                        </li>
-                    </ul>
-                </div>
-
-
             </main>
-
-
 
             <div class="botao">
                 <button onclick="verificarNivelQuizz()">
@@ -203,17 +165,7 @@
                 </button>
             </div>
         </div>
-
-
-
-
-
-
     </div>
-
-
-
-
     <!-- FIM DESKTOP 1O -->
 
 

@@ -1,15 +1,15 @@
 //Variáveis Globais
 let listaTodosQuizzes = [];
 let quizzEscolhido;
-let fimQuizz=0;
-let acertos=0;
+let fimQuizz = 0;
+let acertos = 0;
 let scroll;
 //Fim das Variáveis Globais
 
 // quizz para testes
 let quizzTeste = {
     title: "Título do quizz",
-    image: "https://http.cat/411.jpg",
+    image: "https://cdn.w600.comps.canstockphoto.com.br/selo-palavra-vazio-vetor-clip-arte_csp6017046.jpg",
     questions: [
         {
             title: "Título da pergunta 1",
@@ -79,11 +79,6 @@ let quizzTeste = {
 
 
 
-
-
-
-
-
 //LISTAGEM DE TODOS OS QUIZZES
 const todosquizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
 todosquizzesPromise.then(quizzesData)
@@ -137,19 +132,20 @@ function abrirQuiz(quizzClicado) {
                 quizzExecutandoPergunta.innerHTML +=
                     `<div id="corTitulo${i}"class="titulo-da-pergunta">${quizz.questions[i].title}</div>
          <ul id="${i}" class="opcoes-da-pergunta"></ul>`
-       let titulo=document.getElementById(`corTitulo${i}`) 
-        titulo.style.backgroundColor=quizz.questions[i].color
-    }
-    //Embaralhar as Respostas
-    function comparador() { 
-    return (Math.random() - 0.5) }
-    // para gerar as respostas das respectivas perguntas embaralhadas
-    for (let i=0;i<quizz.questions.length;i++){
-        quizz.questions[i].answers.sort(comparador)
-    let respostaPergunta=document.getElementById(`${i}`) 
-     for(let o=0;o<quizz.questions[i].answers.length;o++){
-        respostaPergunta.innerHTML+=
-        `<div class="caixa-de-opcao" id="${quizz.questions[i].answers[o].isCorrectAnswer}" onclick="selecionarOpcao(this)">
+                let titulo = document.getElementById(`corTitulo${i}`)
+                titulo.style.backgroundColor = quizz.questions[i].color
+            }
+            //Embaralhar as Respostas
+            function comparador() {
+                return (Math.random() - 0.5)
+            }
+            // para gerar as respostas das respectivas perguntas embaralhadas
+            for (let i = 0; i < quizz.questions.length; i++) {
+                quizz.questions[i].answers.sort(comparador)
+                let respostaPergunta = document.getElementById(`${i}`)
+                for (let o = 0; o < quizz.questions[i].answers.length; o++) {
+                    respostaPergunta.innerHTML +=
+                        `<div class="caixa-de-opcao" id="${quizz.questions[i].answers[o].isCorrectAnswer}" onclick="selecionarOpcao(this)">
         <img src="${quizz.questions[i].answers[o].image}"
             alt="">
         <p>${quizz.questions[i].answers[o].text}</p>
@@ -163,52 +159,57 @@ function abrirQuiz(quizzClicado) {
 
 
 //SELEÇÃO DA RESPOSTA
-    function selecionarOpcao(opcao){
-        if (!opcao.classList.contains("naoClicaMais")){
-        fimQuizz+=1
-        let opcaoID= opcao.id
-        if (opcaoID=="true"){
-        opcao.classList.add("texto-certo")
-        opcao.classList.add("naoClicaMais")
-        acertos+=1
+function selecionarOpcao(opcao) {
+    if (!opcao.classList.contains("naoClicaMais")) {
+        fimQuizz += 1
+        let opcaoID = opcao.id
+        if (opcaoID == "true") {
+            opcao.classList.add("texto-certo")
+            opcao.classList.add("naoClicaMais")
+            acertos += 1
         }
-        else if(opcaoID=="false"){
-        opcao.classList.add("texto-errado")
-        opcao.classList.add("naoClicaMais")
+        else if (opcaoID == "false") {
+            opcao.classList.add("texto-errado")
+            opcao.classList.add("naoClicaMais")
         }
-        for (let i=0;i<quizzEscolhido.questions.length;i++){
-            let pergunta=document.getElementById(`${i}`)
-            if (opcao.parentNode.id==i){
-            let todasRespostas=pergunta.querySelectorAll("div")
-            for(o=0;o<todasRespostas.length;o++){
-            if(todasRespostas[o]!=opcao){
-            todasRespostas[o].classList.add("desmarcada")
-            todasRespostas[o].classList.add("naoClicaMais")
-            if(todasRespostas[o].id=="true"){
-            todasRespostas[o].classList.add("texto-certo")
+        for (let i = 0; i < quizzEscolhido.questions.length; i++) {
+            let pergunta = document.getElementById(`${i}`)
+            if (opcao.parentNode.id == i) {
+                let todasRespostas = pergunta.querySelectorAll("div")
+                for (o = 0; o < todasRespostas.length; o++) {
+                    if (todasRespostas[o] != opcao) {
+                        todasRespostas[o].classList.add("desmarcada")
+                        todasRespostas[o].classList.add("naoClicaMais")
+                        if (todasRespostas[o].id == "true") {
+                            todasRespostas[o].classList.add("texto-certo")
+                        }
+                        else {
+                            todasRespostas[o].classList.add("texto-errado")
+                        }
+                        if (!pergunta.classList.contains("naoClicaMais")) {
+                            scroll = pergunta.lastElementChild
+                            setTimeout(function () { scroll.scrollIntoView() }, 2000)
+                        }
+                    }
+                }
             }
-            else{
-            todasRespostas[o].classList.add("texto-errado")
-        } 
-          if (!pergunta.classList.contains("naoClicaMais")){
-         scroll= pergunta.lastElementChild
-         setTimeout(function() { scroll.scrollIntoView()}, 2000)}
-    }}}}
-        if(fimQuizz===quizzEscolhido.questions.length){
-            setTimeout(function() {feedbackQuizz()}, 2000)
         }
-    }}
+        if (fimQuizz === quizzEscolhido.questions.length) {
+            setTimeout(function () { feedbackQuizz() }, 2000)
+        }
+    }
+}
 //FIM DA SELEÇÃO DA RESPOSTA
 
 
 //FEEDBACK DO QUIZZ
-function feedbackQuizz(){
-    let paginaFeedback=document.querySelector(".feedback-do-quizz")
-    let porcentagemDeAcerto= Math.round((acertos*100)/quizzEscolhido.questions.length)
-    for (let i=0;i<quizz.levels.length;i++){
-    if (porcentagemDeAcerto>=quizzEscolhido.levels[i].minValue){ 
-    paginaFeedback.innerHTML=""
-    paginaFeedback.innerHTML+=`
+function feedbackQuizz() {
+    let paginaFeedback = document.querySelector(".feedback-do-quizz")
+    let porcentagemDeAcerto = Math.round((acertos * 100) / quizzEscolhido.questions.length)
+    for (let i = 0; i < quizz.levels.length; i++) {
+        if (porcentagemDeAcerto >= quizzEscolhido.levels[i].minValue) {
+            paginaFeedback.innerHTML = ""
+            paginaFeedback.innerHTML += `
     <div class="quizz-executando-resultado">
         <div class="titulo-do-resultado">
         ${porcentagemDeAcerto}% de acerto: ${quizzEscolhido.levels[i].title}
@@ -224,18 +225,19 @@ function feedbackQuizz(){
 
     <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
     <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>
-</div>`}}
-let feedbackQuizz=document.querySelector(".feedback-do-quizz")
-feedbackQuizz.classList.remove("escondido")
-feedbackQuizz.scrollIntoView()
+</div>`}
+    }
+    let feedbackQuizz = document.querySelector(".feedback-do-quizz")
+    feedbackQuizz.classList.remove("escondido")
+    feedbackQuizz.scrollIntoView()
 }
 //para reiniciar o quizz
-function reiniciarQuizz(){
-abrirQuiz(quizzEscolhido)
-fimQuizz=0;
-acertos=0;
-let feedbackQuizz=document.querySelector(".feedback-do-quizz")
-feedbackQuizz.classList.add("escondido")
+function reiniciarQuizz() {
+    abrirQuiz(quizzEscolhido)
+    fimQuizz = 0;
+    acertos = 0;
+    let feedbackQuizz = document.querySelector(".feedback-do-quizz")
+    feedbackQuizz.classList.add("escondido")
 }
 //sair do quizz para home
 function sairQuizzParaHome() {
@@ -292,6 +294,38 @@ const verificarConfigQuizz = () => {
 
 // DEKTOP 10
 
+function renderizarNiveis(niveis) {
+    const telaNiveis = document.querySelector(".criacao-dos-niveis");
+    telaNiveis.classList.remove("escondido");
+
+    const divNiveis = document.querySelector(".criacao-dos-niveis .containerConteudo main");
+
+    divNiveis.innerHTML = "";
+
+    for (let i = 1; i <= niveis; i++) {
+
+        divNiveis.innerHTML += `<div class="configQuizz-niveis">
+    <div class="descricao-da-config">
+        <p>Nível ${i}</p>
+        <ion-icon onclick="abrirCaixaAbaixo(this)" class="" name="create-outline"></ion-icon>
+    </div>
+    <ul class="escondido">
+        <li><input class="titulo-nivel-quizz" type="text" placeholder="Título do nível" minlength="10"
+                required /></li>
+        <li><input class="nota-nivel-quizz" type="number" placeholder="% de acerto mínima" min="0"
+                max="100" required /></li>
+        <li><input class="url-img-quizz" type="url" placeholder="URL da imagem do nível" required />
+        </li>
+        <li><textarea class="desc-nivel-quizz" cols="30" rows="1" type="text"
+                placeholder="Descrição do nível" minlength="30" required></textarea>
+        </li>
+    </ul>
+</div>`}
+
+}
+
+
+
 // abre a ul para ver as configurações de cada nível de quizz
 function abrirCaixaAbaixo(marca) {
     marca.classList.add("escondido");
@@ -305,6 +339,9 @@ function abrirCaixaAbaixo(marca) {
 function verificarNivelQuizz() {
     const niveis = document.querySelectorAll(".configQuizz-niveis");
     let validador = 0
+
+    quizzTeste.levels = [];
+
     for (let i = 0; i < niveis.length; i++) {
         let n = 0
 
@@ -342,6 +379,12 @@ function verificarNivelQuizz() {
         }
 
         if (n >= 4) {
+            (quizzTeste.levels).push({
+                title: nivelTitulo,
+                image: nivelUrl,
+                text: nivelDesc,
+                minValue: nivelNota,
+            })
             validador++;
         }
     }
@@ -349,6 +392,10 @@ function verificarNivelQuizz() {
     if (validador == niveis.length) {
         alert("prencheu certo os niveis!");
     }
-    else ("preencha corretamente os campos");
+    else {
+        quizzTeste.levels = []
+        alert("preencha corretamente os campos");
+        console.log(quizzTeste.levels);
+    }
 
 }
