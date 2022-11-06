@@ -255,12 +255,14 @@ const verificarConfigQuizz = () => {
         alert(`O número de caracteres é: ${tituloQuizz.value.length}! O mínimo é 20 e o máximo é 65`);
     }
     else {
+        quizzTeste.title = tituloQuizz.value;
         validador++;
     }
 
     const urlQuizz = document.querySelector(".urlQuizz").value;
     let padraoURL = /^https:\/\//i;
     if (padraoURL.test(urlQuizz)) {
+        quizzTeste.image = urlQuizz;
         validador++;
     }
     else {
@@ -359,12 +361,22 @@ const verificarConfigPerguntas = () => {
     validadorQuantidadeRespostas3 = 0;
 
     //VERIFICAÇÃO DO TITULO DA PERGUNTA
+    quizzTeste.questions = [];
+    for(let i = 0; i < perguntaQuizz; i++){
+        (quizzTeste.questions).push({
+            title: "Título da pergunta 1",
+            color: "#123456",
+            answers: []
+        })
+    }
+
     for(let i = 1; i <= perguntaQuizz.value; i++){
         const elemento = document.querySelector(`.textoPergunta${i}`);
         if(elemento.value.length < 20){
             alert(`O número de caracteres do Texto da pergunta ${i} é: ${elemento.value.length}! O mínimo é 20 caracteres!`);
         }
         else{
+            quizzTeste.questions[i-1].title = elemento.value;
             validadorTituloPergunta++;
         }
     }
@@ -404,8 +416,10 @@ const verificarConfigPerguntas = () => {
                     break;
                 }
             }
+            quizzTeste.questions[i-1].color = elemento2;
         }
     }
+
 
     //VERIFICAÇÃO DO TEXTO DAS RESPOSTAS CORRETAS
     for(let i = 1; i <= perguntaQuizz.value; i++){
@@ -415,6 +429,11 @@ const verificarConfigPerguntas = () => {
             alert(`A resposta correta da Pergunta ${i} não pode ser vazia!`);
         }
         else{
+            (quizzTeste.questions[i-1].answers).push( {
+                text: elemento3,
+                image: "https://http.cat/411.jpg",
+                isCorrectAnswer: true
+            })
             validadorRespostaCorreta++;
         }
     }
@@ -423,6 +442,7 @@ const verificarConfigPerguntas = () => {
     for(let i = 1; i <= perguntaQuizz.value; i++){
         const elemento4 = document.querySelector(`.urlImagemCorreta${i}`).value;
         if(padraoURL.test(elemento4)){
+            quizzTeste.questions[i-1].answers[0] = elemento4;
             validadorImagemCorreta++;
         }
         else{
@@ -445,6 +465,11 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 !== "") && (incorreta2 === "") && (incorreta3 === "")){
             if(padraoURL.test(incorretaImagem1)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta1,
+                    image: incorretaImagem1,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas1++;
             }
             else{
@@ -453,6 +478,11 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 === "") && (incorreta2 !== "") && (incorreta3 === "")){
             if(padraoURL.test(incorretaImagem2)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta2,
+                    image: incorretaImagem2,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas2++;
             }
             else{
@@ -461,6 +491,11 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 === "") && (incorreta2 === "") && (incorreta3 !== "")){
             if(padraoURL.test(incorretaImagem3)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta3,
+                    image: incorretaImagem3,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas3++;
             }
             else{
@@ -469,6 +504,15 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 !== "") && (incorreta2 !== "") && (incorreta3 === "")){
             if(padraoURL.test(incorretaImagem1) && padraoURL.test(incorretaImagem2)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta1,
+                    image: incorretaImagem1,
+                    isCorrectAnswer: false
+                }, {
+                    text: incorreta2,
+                    image: incorretaImagem2,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
             }
@@ -478,6 +522,15 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 !== "") && (incorreta2 === "") && (incorreta3 !== "")){
             if(padraoURL.test(incorretaImagem1) && padraoURL.test(incorretaImagem3)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta1,
+                    image: incorretaImagem1,
+                    isCorrectAnswer: false
+                }, {
+                    text: incorreta3,
+                    image: incorretaImagem3,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas3++;
             }
@@ -487,6 +540,15 @@ const verificarConfigPerguntas = () => {
         }
         else if((incorreta1 === "") && (incorreta2 !== "") && (incorreta3 !== "")){
             if(padraoURL.test(incorretaImagem2) && padraoURL.test(incorretaImagem3)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta2,
+                    image: incorretaImagem2,
+                    isCorrectAnswer: false
+                }, {
+                    text: incorreta3,
+                    image: incorretaImagem3,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
             }
@@ -496,6 +558,19 @@ const verificarConfigPerguntas = () => {
         }
         else{
             if(padraoURL.test(incorretaImagem1) && padraoURL.test(incorretaImagem2) && padraoURL.test(incorretaImagem3)){
+                (quizzTeste.questions[i-1].answers).push( {
+                    text: incorreta1,
+                    image: incorretaImagem1,
+                    isCorrectAnswer: false
+                }, {
+                    text: incorreta2,
+                    image: incorretaImagem2,
+                    isCorrectAnswer: false
+                }, {
+                    text: incorreta3,
+                    image: incorretaImagem3,
+                    isCorrectAnswer: false
+                })
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
