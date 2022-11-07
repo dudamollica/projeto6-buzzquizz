@@ -102,6 +102,15 @@ function randerizarTodosQuizzes() {
 }
 //FIM DA LISTAGEM DE TODOS OS QUIZZES
 
+//IR PARA A TELA DE CRIAÇÃO DE QUIZZ
+function abrirCriacaoDeQuizz(){
+    let telaInicial = document.querySelector(".tela-inicial")
+    telaInicial.classList.add("escondido")
+    let telaCriacao =document.querySelector(".containerGlobal")
+    telaCriacao.classList.remove("escondido")
+}
+//FIM DA TELA DE CRIAÇÃO DE QUIZZ
+
 
 //ABRIR UM QUIZZ
 function abrirQuiz(quizzClicado) {
@@ -163,7 +172,7 @@ function abrirQuiz(quizzClicado) {
 function selecionarOpcao(opcao){
     if (!opcao.classList.contains("naoClicaMais")){
     fimQuizz+=1
-    console.log(fimquiz)
+    console.log(opcao)
     let opcaoID= opcao.id
     if (opcaoID=="true"){
     opcao.classList.add("texto-certo")
