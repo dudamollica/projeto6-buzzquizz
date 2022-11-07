@@ -9,10 +9,11 @@ const meusQuizzesSerializados = localStorage.getItem("MeuPCQuizzes")
 let meusQuizzes = [];
 //Fim das Variáveis Globais
 
-if(meusQuizzesSerializados != null){
+if (meusQuizzesSerializados != null) {
     meusQuizzes = JSON.parse(meusQuizzesSerializados);
 }
 console.log(meusQuizzes)
+
 
 // quizz para testes
 let quizzTeste = {
@@ -85,26 +86,14 @@ let quizzTeste = {
 }
 // fim da variável de quizz para teste
 
-
-
-//LISTAGEM QUIZZES DO USUÁRIO
-function raderizarQuizzesUsuario(){
-    if (meusQuizzes.length!=0){
-    let caixaSemQuizz= document.querySelector(".caixa-sem-quizz")
-    caixaSemQuizz.classList.add("escondido")
-    let caixaQuizzesUsuario=document.querySelector(".caixa-seus-quizzes")
-    caixaQuizzesUsuario.classList.remove("escondido")
-    }
-    caixaQuizzesUsuario.innerHTML= ""
-    for(let i=0;i<meusQuizzes.length;i++){
-        let quizz = listaTodosQuizzes[i]
-     if (quizz.id==meusQuizzes[i]){
-        caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
-    <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
-    <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
-    }}
+//IR PARA A TELA DE CRIAÇÃO DE QUIZZ
+function abrirCriacaoDeQuizz() {
+    let telaInicial = document.querySelector(".tela-inicial")
+    telaInicial.classList.add("escondido")
+    let telaCriacao = document.querySelector(".containerGlobal")
+    telaCriacao.classList.remove("escondido")
 }
-//FIM DA LISTAGEM DE QUIZZES DO USUÁRIO
+//FIM DA TELA DE CRIAÇÃO DE QUIZZ
 
 
 //LISTAGEM DE TODOS OS QUIZZES
@@ -114,31 +103,58 @@ todosquizzesPromise.then(quizzesData)
 function quizzesData(resposta) {
     listaTodosQuizzes = resposta.data
     randerizarTodosQuizzes()
+    raderizarQuizzesUsuario()
 }
 function randerizarTodosQuizzes() {
-    caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
-    caixaTodosQuizzes.innerHTML = ""
-    //filtrar mensagens que o usuário criou
-    for (let i = 0; i < listaTodosQuizzes.length*meusQuizzes.length; i++) {
-        let quizz = listaTodosQuizzes[i]//depois colocar array filtrada 
-        for (let o=0; o<meusQuizzes.length;o++){
-
-        if(quizz.id != meusQuizzes[0][o+1] && quizz.id != meusQuizzes[0][0][o]){ 
-        caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
+    let caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
+    if (meusQuizzes.length != 0) {
+        for (let i = 0; i < listaTodosQuizzes.length; i++) {
+            let quizz = listaTodosQuizzes[i]
+            
+                if (!meusQuizzes.includes(quizz.id)) {
+                    caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
     <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
     <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
-    }}}
+                }
+            }
+        }
+    
+
+    else {
+        for (let i = 0; i < listaTodosQuizzes.length; i++) {
+            let quizz = listaTodosQuizzes[i]
+            caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
+        <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
+        <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
+        }
+    }
 }
+
 //FIM DA LISTAGEM DE TODOS OS QUIZZES
 
-//IR PARA A TELA DE CRIAÇÃO DE QUIZZ
-function abrirCriacaoDeQuizz(){
-    let telaInicial = document.querySelector(".tela-inicial")
-    telaInicial.classList.add("escondido")
-    let telaCriacao =document.querySelector(".containerGlobal")
-    telaCriacao.classList.remove("escondido")
+
+//LISTAGEM DOS QUIZZES DO USUÁRIO
+function raderizarQuizzesUsuario() {
+    if (meusQuizzes.length != 0) {
+        let caixaSemQuizz = document.querySelector(".caixa-sem-quizz")
+        caixaSemQuizz.classList.add("escondido")
+        let quizzesUsuario = document.querySelector(".seus-quizzes")
+        quizzesUsuario.classList.remove("escondido")
+        let caixaQuizzesUsuario = document.querySelector(".caixa-seus-quizzes")
+        for (let i = 0; i < listaTodosQuizzes.length; i++) {
+            let quizz = listaTodosQuizzes[i]
+            for (let o = 0; o < meusQuizzes.length; o++) {
+                if (quizz.id == meusQuizzes[o]) {
+                    caixaQuizzesUsuario.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
+    <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
+    <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
+                }
+            }
+        }
+    }
 }
-//FIM DA TELA DE CRIAÇÃO DE QUIZZ
+//FIM DA LISTAGEM DOS QUIZZES DO USUÁRIO
+
 
 
 //ABRIR UM QUIZZ
@@ -149,7 +165,7 @@ function abrirQuiz(quizzClicado) {
         let quizzID = quizz.id
         if (quizzID === idQuizzClicado) {
             quizzEscolhido = quizz
-           
+
             //para aparecer a tela do quizz
             let telaInicial = document.querySelector(".tela-inicial")
             telaInicial.classList.add("escondido")
@@ -198,42 +214,47 @@ function abrirQuiz(quizzClicado) {
 
 
 //SELEÇÃO DA RESPOSTA
-function selecionarOpcao(opcao){
-    if (!opcao.classList.contains("naoClicaMais")){
-    fimQuizz+=1
-    console.log(opcao)
-    let opcaoID= opcao.id
-    if (opcaoID=="true"){
-    opcao.classList.add("texto-certo")
-    opcao.classList.add("naoClicaMais")
-    acertos+=1
-    }
-    else if(opcaoID=="false"){
-    opcao.classList.add("texto-errado")
-    opcao.classList.add("naoClicaMais")
-    }
-    for (let i=0;i<quizzEscolhido.questions.length;i++){
-        let pergunta=document.getElementById(`${i}`)
-        if (opcao.parentNode.id==i){
-        let todasRespostas=pergunta.querySelectorAll("div")
-        for(o=0;o<todasRespostas.length;o++){
-        if(todasRespostas[o]!=opcao){
-        todasRespostas[o].classList.add("desmarcada")
-        todasRespostas[o].classList.add("naoClicaMais")
-        if(todasRespostas[o].id=="true"){
-        todasRespostas[o].classList.add("texto-certo")
+function selecionarOpcao(opcao) {
+    if (!opcao.classList.contains("naoClicaMais")) {
+        fimQuizz += 1
+        console.log(opcao)
+        let opcaoID = opcao.id
+        if (opcaoID == "true") {
+            opcao.classList.add("texto-certo")
+            opcao.classList.add("naoClicaMais")
+            acertos += 1
         }
-        else{
-        todasRespostas[o].classList.add("texto-errado")
-    } 
-      if (!pergunta.classList.contains("naoClicaMais")){
-     scroll= pergunta.lastElementChild
-     setTimeout(function() { scroll.scrollIntoView()}, 2000)}
-}}}}
-    if(fimQuizz===quizzEscolhido.questions.length){
-        setTimeout(function() {feedbackQuizz()}, 2000)
+        else if (opcaoID == "false") {
+            opcao.classList.add("texto-errado")
+            opcao.classList.add("naoClicaMais")
+        }
+        for (let i = 0; i < quizzEscolhido.questions.length; i++) {
+            let pergunta = document.getElementById(`${i}`)
+            if (opcao.parentNode.id == i) {
+                let todasRespostas = pergunta.querySelectorAll("div")
+                for (o = 0; o < todasRespostas.length; o++) {
+                    if (todasRespostas[o] != opcao) {
+                        todasRespostas[o].classList.add("desmarcada")
+                        todasRespostas[o].classList.add("naoClicaMais")
+                        if (todasRespostas[o].id == "true") {
+                            todasRespostas[o].classList.add("texto-certo")
+                        }
+                        else {
+                            todasRespostas[o].classList.add("texto-errado")
+                        }
+                        if (!pergunta.classList.contains("naoClicaMais")) {
+                            scroll = pergunta.lastElementChild
+                            setTimeout(function () { scroll.scrollIntoView() }, 2000)
+                        }
+                    }
+                }
+            }
+        }
+        if (fimQuizz === quizzEscolhido.questions.length) {
+            setTimeout(function () { feedbackQuizz() }, 2000)
+        }
     }
-}}
+}
 //FIM DA SELEÇÃO DA RESPOSTA
 
 
@@ -259,7 +280,7 @@ function feedbackQuizz() {
     </div>
 
     <button class="restart-button" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-    <button class="home-button" onclick="sairQuizzParaHome()">Voltar para Home</button>`}
+    <button class="home-button" onclick="sairParaHome()">Voltar para Home</button>`}
     }
     let feedbackQuizz = document.querySelector(".feedback-do-quizz")
     feedbackQuizz.classList.remove("escondido")
@@ -289,10 +310,11 @@ function reiniciarQuizz() {
 </div>`
 }
 //sair do quizz para home
-function sairQuizzParaHome() {
+function sairParaHome() {
     window.location.reload()
 }
 //FIM DO FEEDBACK DO QUIZZ
+
 
 
 //INÍCIO JAVASCRIPT DO DESKTOP 8
@@ -766,7 +788,16 @@ function quizPostado(resposta) {
     telaNiveis.classList.add("escondido");
     alert("quizz postado com sucesso!");
 
+    
     const telaSucesso = document.querySelector(".sucesso-quizz");
+    telaSucesso.innerHTML=""
+    telaSucesso.innerHTML+=`<h1 class="titulo">Seu quizz está pronto!</h1>
+    <div class="caixa-imagem-sucesso">
+        <div class="imagem-sucesso"><img class="imagem-sucesso" src="${resposta.data.image}"/></div>
+        <div class="degrade-sucesso"> <p class="sucesso-titulo-quizz">${resposta.data.title}</p> </div>
+    </div>
+    <button onclick="abrirEsseQuizz(this)">Acessar Quizz</button>
+    <span onclick="sairParaHome()">Voltar pra home</span>`
     telaSucesso.classList.remove("escondido");
 
     const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
