@@ -11,7 +11,7 @@ let meusQuizzes = [];
 //Fim das Variáveis Globais
 
 if(meusQuizzesSerializados != null){
-    meusQuizzes.push(JSON.parse(meusQuizzesSerializados));
+    meusQuizzes = JSON.parse(meusQuizzesSerializados);
 }
 
 console.log(meusQuizzes);
@@ -740,8 +740,6 @@ function quizPostado(resposta) {
 
     const atualizaQuizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
     atualizaQuizzesPromise.then(quizzesData);
-
-
 
 }
 
