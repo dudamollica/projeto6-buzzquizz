@@ -107,7 +107,7 @@ function randerizarTodosQuizzes() {
 function abrirQuiz(quizzClicado) {
     let idQuizzClicado = Number(quizzClicado.id)
     for (let i = 0; i < listaTodosQuizzes.length; i++) {
-        quizz = listaTodosQuizzes[i]
+        let quizz = listaTodosQuizzes[i]
         let quizzID = quizz.id
         if (quizzID === idQuizzClicado) {
             quizzEscolhido = quizz
@@ -163,6 +163,7 @@ function abrirQuiz(quizzClicado) {
 function selecionarOpcao(opcao){
     if (!opcao.classList.contains("naoClicaMais")){
     fimQuizz+=1
+    console.log(fimquiz)
     let opcaoID= opcao.id
     if (opcaoID=="true"){
     opcao.classList.add("texto-certo")
@@ -202,7 +203,7 @@ function selecionarOpcao(opcao){
 function feedbackQuizz() {
     let paginaFeedback = document.querySelector(".feedback-do-quizz")
     let porcentagemDeAcerto = Math.round((acertos * 100) / quizzEscolhido.questions.length)
-    for (let i = 0; i < quizz.levels.length; i++) {
+    for (let i = 0; i < quizzEscolhido.levels.length; i++) {
         if (porcentagemDeAcerto >= quizzEscolhido.levels[i].minValue) {
             paginaFeedback.innerHTML = ""
             paginaFeedback.innerHTML += `
@@ -313,12 +314,12 @@ const verificarConfigQuizz = () => {
                         <h3>Pergunta ${i}</h3>
                     </div>
 
-                    <div>
+                    <div onclick="abrirCaixaAbaixo(this)">
                         <ion-icon class="icone" name="create-outline"></ion-icon>
                     </div>
                 </header>
 
-                <div class="caixa">
+                <div class="caixa escondido">
                     <div class="divDosInput">
                         <ul>
                             <li><input class="textoPergunta${i}" type="text" placeholder="Texto da pergunta" minlength="20" required /></li>
@@ -366,18 +367,22 @@ const verificarConfigQuizz = () => {
 const verificarConfigPerguntas = () => {
     let transformador = Number(perguntaQuizz.value);
     let padraoURL = /^https:\/\//i;
-    let validadorTituloPergunta, validadorCorFundoPergunta, validadorRespostaCorreta,
-        validadorImagemCorreta, validadorQuantidadeRespostas1, validadorQuantidadeRespostas2,
-        validadorQuantidadeRespostas3 = 0;
+    let validadorTituloPergunta = 0;
+    let validadorCorFundoPergunta = 0;
+    let validadorRespostaCorreta = 0;
+    let validadorImagemCorreta = 0;
+    let validadorQuantidadeRespostas1 = 0;
+    let validadorQuantidadeRespostas2 = 0;
+    let validadorQuantidadeRespostas3 = 0;
 
     //VERIFICAÇÃO DO TITULO DA PERGUNTA
     quizzTeste.questions = [];
-    for (let i = 0; i < perguntaQuizz; i++) {
+    for (let i = 0; i < perguntaQuizz.value; i++) {
         (quizzTeste.questions).push({
             title: "Título da pergunta 1",
             color: "#123456",
             answers: []
-        })
+        });
     }
 
     for (let i = 1; i <= perguntaQuizz.value; i++) {
@@ -443,7 +448,7 @@ const verificarConfigPerguntas = () => {
                 text: elemento3,
                 image: "https://http.cat/411.jpg",
                 isCorrectAnswer: true
-            })
+            });
             validadorRespostaCorreta++;
         }
     }
@@ -479,7 +484,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta1,
                     image: incorretaImagem1,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
             }
             else {
@@ -492,7 +497,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta2,
                     image: incorretaImagem2,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas2++;
             }
             else {
@@ -505,7 +510,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas3++;
             }
             else {
@@ -522,7 +527,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta2,
                     image: incorretaImagem2,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
             }
@@ -540,7 +545,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas3++;
             }
@@ -558,7 +563,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
             }
@@ -580,7 +585,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
@@ -591,14 +596,24 @@ const verificarConfigPerguntas = () => {
         }
     }
 
+    console.log(validadorTituloPergunta == transformador);
+    console.log(validadorCorFundoPergunta % transformador == 0);
+    console.log(validadorRespostaCorreta == transformador);
+    console.log(validadorImagemCorreta == transformador);
+    console.log(validadorQuantidadeRespostas1 == transformador);
+    console.log(validadorQuantidadeRespostas2 == transformador);
+    console.log(validadorQuantidadeRespostas3 == transformador);
+
     if ((validadorTituloPergunta === transformador) && (validadorCorFundoPergunta % transformador === 0)
         && (validadorRespostaCorreta === transformador) && (validadorImagemCorreta === transformador)
-        && (validadorQuantidadeRespostas1 === transformador) && (validadorQuantidadeRespostas2 === transformador)
-        && (validadorQuantidadeRespostas3 === transformador)) {
+        && ((validadorQuantidadeRespostas1 === transformador) || (validadorQuantidadeRespostas2 === transformador)
+        || (validadorQuantidadeRespostas3 === transformador))) {
         const elementoVerificador = document.querySelector(".containerGlobalPerguntas");
         elementoVerificador.classList.add("escondido");
 
-        //renderizarNiveis(nivelQuizz);
+        alert("planeta");
+
+        renderizarNiveis(nivelQuizz);
     }
 }
 //FIM JAVASCRIPT DO DESKTOP 9
