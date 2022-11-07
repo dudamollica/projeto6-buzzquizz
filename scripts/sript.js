@@ -6,7 +6,16 @@ let quizzEscolhido;
 let fimQuizz = 0;
 let acertos = 0;
 let scroll;
+const meusQuizzesSerializados = localStorage.getItem("MeuPCQuizzes")
+let meusQuizzes = [];
 //Fim das Variáveis Globais
+
+if(meusQuizzesSerializados != null){
+    meusQuizzes.push(JSON.parse(meusQuizzesSerializados));
+}
+
+console.log(meusQuizzes);
+
 
 // quizz para testes
 let quizzTeste = {
@@ -724,7 +733,15 @@ function quizPostado(resposta) {
 
     const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
     MeuQuizzBotao.id = resposta.data.id;
-    console.log(MeuQuizzBotao.id);
+
+    meusQuizzes.push(resposta.data.id);
+    const novosQuizzesPC = JSON.stringify(meusQuizzes);
+    localStorage.setItem("MeuPCQuizzes", novosQuizzesPC);
+
+    const atualizaQuizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    atualizaQuizzesPromise.then(quizzesData);
+
+
 
 }
 
@@ -737,7 +754,5 @@ function quizNaoPostado(resposta) {
 function abrirEsseQuizz(esse) {
     const telaSucesso = document.querySelector(".sucesso-quizz");
     telaSucesso.classList.add("escondido");
-
     abrirQuiz(esse);
-
 }
