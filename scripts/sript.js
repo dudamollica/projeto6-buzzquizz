@@ -305,12 +305,12 @@ const verificarConfigQuizz = () => {
                         <h3>Pergunta ${i}</h3>
                     </div>
 
-                    <div>
+                    <div onclick="abrirCaixaAbaixo(this)">
                         <ion-icon class="icone" name="create-outline"></ion-icon>
                     </div>
                 </header>
 
-                <div class="caixa">
+                <div class="caixa escondido">
                     <div class="divDosInput">
                         <ul>
                             <li><input class="textoPergunta${i}" type="text" placeholder="Texto da pergunta" minlength="20" required /></li>
@@ -358,18 +358,22 @@ const verificarConfigQuizz = () => {
 const verificarConfigPerguntas = () => {
     const transformador = Number(perguntaQuizz.value);
     let padraoURL = /^https:\/\//i;
-    let validadorTituloPergunta = 0, validadorCorFundoPergunta = 0, validadorRespostaCorreta = 0,
-        validadorImagemCorreta = 0, validadorQuantidadeRespostas1 = 0, validadorQuantidadeRespostas2 = 0,
-        validadorQuantidadeRespostas3 = 0;
+    let validadorTituloPergunta = 0;
+    let validadorCorFundoPergunta = 0;
+    let validadorRespostaCorreta = 0;
+    let validadorImagemCorreta = 0;
+    let validadorQuantidadeRespostas1 = 0;
+    let validadorQuantidadeRespostas2 = 0;
+    let validadorQuantidadeRespostas3 = 0;
 
     //VERIFICAÇÃO DO TITULO DA PERGUNTA
     quizzTeste.questions = [];
-    for (let i = 0; i < (Number(perguntaQuizz.value)); i++) {
+    for (let i = 0; i < perguntaQuizz.value; i++) {
         (quizzTeste.questions).push({
             title: "Título da pergunta 1",
             color: "#123456",
             answers: []
-        })
+        });
     }
     console.log(quizzTeste.questions);
 
@@ -436,7 +440,7 @@ const verificarConfigPerguntas = () => {
                 text: elemento3,
                 image: "https://http.cat/411.jpg",
                 isCorrectAnswer: true
-            })
+            });
             validadorRespostaCorreta++;
         }
     }
@@ -472,7 +476,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta1,
                     image: incorretaImagem1,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
             }
             else {
@@ -485,7 +489,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta2,
                     image: incorretaImagem2,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas2++;
             }
             else {
@@ -498,7 +502,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas3++;
             }
             else {
@@ -515,7 +519,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta2,
                     image: incorretaImagem2,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
             }
@@ -533,7 +537,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas3++;
             }
@@ -551,7 +555,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
             }
@@ -573,7 +577,7 @@ const verificarConfigPerguntas = () => {
                     text: incorreta3,
                     image: incorretaImagem3,
                     isCorrectAnswer: false
-                })
+                });
                 validadorQuantidadeRespostas1++;
                 validadorQuantidadeRespostas2++;
                 validadorQuantidadeRespostas3++;
@@ -584,21 +588,10 @@ const verificarConfigPerguntas = () => {
         }
     }
 
-    console.log(validadorTituloPergunta == transformador);
-    console.log(validadorCorFundoPergunta % transformador == 0);
-    console.log(validadorRespostaCorreta == transformador);
-    console.log(validadorImagemCorreta == transformador);
-    console.log(validadorQuantidadeRespostas1 == transformador);
-    console.log(validadorQuantidadeRespostas2 == transformador);
-    console.log(validadorQuantidadeRespostas3 == transformador);
-
-
-
     if ((validadorTituloPergunta === transformador) && (validadorCorFundoPergunta % transformador === 0)
         && (validadorRespostaCorreta === transformador) && (validadorImagemCorreta === transformador)
-        && (validadorQuantidadeRespostas1 === transformador) && (validadorQuantidadeRespostas2 === transformador)
-        && (validadorQuantidadeRespostas3 === transformador)) {
-        alert("entrou no if")
+        && ((validadorQuantidadeRespostas1 === transformador) || (validadorQuantidadeRespostas2 === transformador)
+            || (validadorQuantidadeRespostas3 === transformador))) {
         const elementoVerificador = document.querySelector(".containerGlobalPerguntas");
         console.log(elementoVerificador);
         elementoVerificador.classList.add("escondido");
@@ -708,11 +701,43 @@ function verificarNivelQuizz() {
 
     if (validador == niveis.length) {
         alert("prencheu certo os niveis!");
-        console.log(quizzTeste)
+        const promiseQuizzCompleto = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzTeste);
+        promiseQuizzCompleto.then(quizPostado);
+        promiseQuizzCompleto.catch(quizNaoPostado);
+
     }
     else {
         quizzTeste.levels = []
         alert("preencha corretamente os campos");
     }
+
+}
+
+
+function quizPostado(resposta) {
+    const telaNiveis = document.querySelector(".criacao-dos-niveis");
+    telaNiveis.classList.add("escondido");
+    alert("quizz postado com sucesso!");
+
+    const telaSucesso = document.querySelector(".sucesso-quizz");
+    telaSucesso.classList.remove("escondido");
+
+    const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
+    MeuQuizzBotao.id = resposta.data.id;
+    console.log(MeuQuizzBotao.id);
+
+}
+
+function quizNaoPostado(resposta) {
+    alert("erro na postagem do quizz");
+    console.log(resposta);
+}
+
+
+function abrirEsseQuizz(esse) {
+    const telaSucesso = document.querySelector(".sucesso-quizz");
+    telaSucesso.classList.add("escondido");
+
+    abrirQuiz(esse);
 
 }
