@@ -365,7 +365,7 @@ const verificarConfigQuizz = () => {
 
 //ATIVANDO FUNÇÃO DEPOIS QUE CLICAR NO BOTÃO
 const verificarConfigPerguntas = () => {
-    let transformador = Number(perguntaQuizz.value);
+    const transformador = Number(perguntaQuizz.value);
     let padraoURL = /^https:\/\//i;
     let validadorTituloPergunta = 0;
     let validadorCorFundoPergunta = 0;
@@ -384,6 +384,7 @@ const verificarConfigPerguntas = () => {
             answers: []
         });
     }
+    console.log(quizzTeste.questions);
 
     for (let i = 1; i <= perguntaQuizz.value; i++) {
         const elemento = document.querySelector(`.textoPergunta${i}`);
@@ -457,7 +458,7 @@ const verificarConfigPerguntas = () => {
     for (let i = 1; i <= perguntaQuizz.value; i++) {
         const elemento4 = document.querySelector(`.urlImagemCorreta${i}`).value;
         if (padraoURL.test(elemento4)) {
-            quizzTeste.questions[i - 1].answers[0] = elemento4;
+            quizzTeste.questions[i - 1].answers[0].image = elemento4;
             validadorImagemCorreta++;
         }
         else {
@@ -596,22 +597,13 @@ const verificarConfigPerguntas = () => {
         }
     }
 
-    console.log(validadorTituloPergunta == transformador);
-    console.log(validadorCorFundoPergunta % transformador == 0);
-    console.log(validadorRespostaCorreta == transformador);
-    console.log(validadorImagemCorreta == transformador);
-    console.log(validadorQuantidadeRespostas1 == transformador);
-    console.log(validadorQuantidadeRespostas2 == transformador);
-    console.log(validadorQuantidadeRespostas3 == transformador);
-
     if ((validadorTituloPergunta === transformador) && (validadorCorFundoPergunta % transformador === 0)
         && (validadorRespostaCorreta === transformador) && (validadorImagemCorreta === transformador)
         && ((validadorQuantidadeRespostas1 === transformador) || (validadorQuantidadeRespostas2 === transformador)
-        || (validadorQuantidadeRespostas3 === transformador))) {
+            || (validadorQuantidadeRespostas3 === transformador))) {
         const elementoVerificador = document.querySelector(".containerGlobalPerguntas");
+        console.log(elementoVerificador);
         elementoVerificador.classList.add("escondido");
-
-        alert("planeta");
 
         renderizarNiveis(nivelQuizz);
     }
@@ -718,11 +710,43 @@ function verificarNivelQuizz() {
 
     if (validador == niveis.length) {
         alert("prencheu certo os niveis!");
+        const promiseQuizzCompleto = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzTeste);
+        promiseQuizzCompleto.then(quizPostado);
+        promiseQuizzCompleto.catch(quizNaoPostado);
+
     }
     else {
         quizzTeste.levels = []
         alert("preencha corretamente os campos");
-        console.log(quizzTeste.levels);
     }
+
+}
+
+
+function quizPostado(resposta) {
+    const telaNiveis = document.querySelector(".criacao-dos-niveis");
+    telaNiveis.classList.add("escondido");
+    alert("quizz postado com sucesso!");
+
+    const telaSucesso = document.querySelector(".sucesso-quizz");
+    telaSucesso.classList.remove("escondido");
+
+    const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
+    MeuQuizzBotao.id = resposta.data.id;
+    console.log(MeuQuizzBotao.id);
+
+}
+
+function quizNaoPostado(resposta) {
+    alert("erro na postagem do quizz");
+    console.log(resposta);
+}
+
+
+function abrirEsseQuizz(esse) {
+    const telaSucesso = document.querySelector(".sucesso-quizz");
+    telaSucesso.classList.add("escondido");
+
+    abrirQuiz(esse);
 
 }
