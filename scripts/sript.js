@@ -5,7 +5,14 @@ let nivelQuizz;
 let quizzEscolhido;
 let fimQuizz = 0;
 let acertos = 0;
+const meusQuizzesSerializados = localStorage.getItem("MeuPCQuizzes")
+let meusQuizzes = [];
 //Fim das Variáveis Globais
+
+if(meusQuizzesSerializados != null){
+    meusQuizzes.push(JSON.parse(meusQuizzesSerializados));
+}
+console.log(meusQuizzes)
 
 // quizz para testes
 let quizzTeste = {
@@ -80,25 +87,47 @@ let quizzTeste = {
 
 
 
+//LISTAGEM QUIZZES DO USUÁRIO
+function raderizarQuizzesUsuario(){
+    if (meusQuizzes.length!=0){
+    let caixaSemQuizz= document.querySelector(".caixa-sem-quizz")
+    caixaSemQuizz.classList.add("escondido")
+    let caixaQuizzesUsuario=document.querySelector(".caixa-seus-quizzes")
+    caixaQuizzesUsuario.classList.remove("escondido")
+    }
+    caixaQuizzesUsuario.innerHTML= ""
+    for(let i=0;i<meusQuizzes.length;i++){
+        let quizz = listaTodosQuizzes[i]
+     if (quizz.id==meusQuizzes[i]){
+        caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
+    <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
+    <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
+    }}
+}
+//FIM DA LISTAGEM DE QUIZZES DO USUÁRIO
+
+
 //LISTAGEM DE TODOS OS QUIZZES
 const todosquizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
 todosquizzesPromise.then(quizzesData)
 
 function quizzesData(resposta) {
     listaTodosQuizzes = resposta.data
-    console.log(listaTodosQuizzes)
     randerizarTodosQuizzes()
 }
 function randerizarTodosQuizzes() {
-   let caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
+    caixaTodosQuizzes = document.querySelector(".caixa-todos-quizzes")
     caixaTodosQuizzes.innerHTML = ""
     //filtrar mensagens que o usuário criou
-    for (let i = 0; i < listaTodosQuizzes.length; i++) {
+    for (let i = 0; i < listaTodosQuizzes.length*meusQuizzes.length; i++) {
         let quizz = listaTodosQuizzes[i]//depois colocar array filtrada 
+        for (let o=0; o<meusQuizzes.length;o++){
+
+        if(quizz.id != meusQuizzes[0][o+1] && quizz.id != meusQuizzes[0][0][o]){ 
         caixaTodosQuizzes.innerHTML += `<li class="quizz" id="${quizz.id}" onclick="abrirQuiz(this)">
     <div class="background-quizz-lista-todos"><img class="background-quizz-lista-todos" src="${quizz.image}"/></div>
     <div class="degrade-quizz-lista-todos"> <p class="titulo-quiz-lista">"${quizz.title}"</p> </div></li>`
-    }
+    }}}
 }
 //FIM DA LISTAGEM DE TODOS OS QUIZZES
 
@@ -120,7 +149,7 @@ function abrirQuiz(quizzClicado) {
         let quizzID = quizz.id
         if (quizzID === idQuizzClicado) {
             quizzEscolhido = quizz
-            console.log(quizz)
+           
             //para aparecer a tela do quizz
             let telaInicial = document.querySelector(".tela-inicial")
             telaInicial.classList.add("escondido")
@@ -742,7 +771,15 @@ function quizPostado(resposta) {
 
     const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
     MeuQuizzBotao.id = resposta.data.id;
-    console.log(MeuQuizzBotao.id);
+
+    meusQuizzes.push(resposta.data.id);
+    const novosQuizzesPC = JSON.stringify(meusQuizzes);
+    localStorage.setItem("MeuPCQuizzes", novosQuizzesPC);
+
+    const atualizaQuizzesPromise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    atualizaQuizzesPromise.then(quizzesData);
+
+
 
 }
 
@@ -755,7 +792,5 @@ function quizNaoPostado(resposta) {
 function abrirEsseQuizz(esse) {
     const telaSucesso = document.querySelector(".sucesso-quizz");
     telaSucesso.classList.add("escondido");
-
     abrirQuiz(esse);
-
 }
