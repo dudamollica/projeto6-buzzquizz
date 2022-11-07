@@ -799,6 +799,7 @@ function quizPostado(resposta) {
     <button onclick="abrirEsseQuizz(this)">Acessar Quizz</button>
     <span onclick="sairParaHome()">Voltar pra home</span>`
     telaSucesso.classList.remove("escondido");
+    
 
     const MeuQuizzBotao = document.querySelector(".sucesso-quizz button");
     MeuQuizzBotao.id = resposta.data.id;
